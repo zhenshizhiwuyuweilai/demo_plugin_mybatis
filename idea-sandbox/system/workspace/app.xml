@@ -1,0 +1,17 @@
+<application>
+  <component name="shared-index-jdk-hash">
+    <option name="entries">
+      <entry>
+        <option name="aliases">
+          <list>
+            <option value="1.8.0_231" />
+            <option value="1.8" />
+          </list>
+        </option>
+        <option name="hash" value="c61aa1fde2ef92a897f2ebf0d23e80471db1f6b1" />
+        <option name="name" value="1.8" />
+        <option name="snapshotHash" value="6d776ad8386f969c03562ca0b08b4c017e92fbcc524b64a29490f5776cae37c6" />
+      </entry>
+    </option>
+  </component>
+</application>

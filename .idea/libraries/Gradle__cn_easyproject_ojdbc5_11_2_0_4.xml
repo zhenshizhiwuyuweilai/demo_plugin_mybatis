@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: cn.easyproject:ojdbc5:11.2.0.4">
+    <CLASSES>
+      <root url="jar://E:/gradle-6.7.1/repo/caches/modules-2/files-2.1/cn.easyproject/ojdbc5/11.2.0.4/5543067223760fc2277fe3f603d8c4630927679c/ojdbc5-11.2.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://E:/gradle-6.7.1/repo/caches/modules-2/files-2.1/cn.easyproject/ojdbc5/11.2.0.4/bd625a289fe90676553fa1bee590d6553ddd8022/ojdbc5-11.2.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

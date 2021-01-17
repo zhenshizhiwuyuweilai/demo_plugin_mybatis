@@ -1,0 +1,30 @@
+<idea-plugin>
+    <id>com.lansoft.custom_mybatis_plugin</id>
+    <name>Custom MybatisPlus Generator</name>
+    <vendor email="11support@yourcompany.com" url="11http://www.yourcompany.com">123456</vendor>
+
+    <description>人生中写的第一个mybatisPlus自动生成代码插件v1.0.1版本（暂时只支持oracle数据，写死）</description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+<!--    <depends >com.intellij.modules.ultimate</depends>-->
+    <depends>com.intellij.database</depends>
+    <!-- support aliases -->
+    <depends>com.intellij.spring</depends>
+    <!-- support aliases -->
+    <depends>com.intellij.spring.boot</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="custom_mybatis_plus_generator" class="com.lansoft.action.MybatisPlusGeneratorAction"
+                text="Custom-Mybatis-Generator" description="MybatisPlus自动生成器">
+            <add-to-group group-id="DatabaseViewPopupMenu" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>

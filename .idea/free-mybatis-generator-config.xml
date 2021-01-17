@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PersistentConfig">
+    <option name="historyConfigList">
+      <map>
+        <entry key="BO_I_CP_SOPAYNOTIFY_OLD">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="BoICpSopaynotifyOldDao" />
+              <option name="daoPackage" value="generate" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="BoICpSopaynotifyOld" />
+              <option name="modelPackage" value="generate" />
+              <option name="name" value="BO_I_CP_SOPAYNOTIFY_OLD" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="BO_I_CP_SOPAYNOTIFY_OLD" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="generator" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="RES_I_SEND_MESSAGE">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="ResISendMessageDao" />
+              <option name="daoPackage" value="generate" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="ResISendMessage" />
+              <option name="modelPackage" value="generate" />
+              <option name="name" value="RES_I_SEND_MESSAGE" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="" />
+              <option name="projectFolder" value="E:\临时\生成" />
+              <option name="tableName" value="RES_I_SEND_MESSAGE" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="generator" />
+            </Config>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

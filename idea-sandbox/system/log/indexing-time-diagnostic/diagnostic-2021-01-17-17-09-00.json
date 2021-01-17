@@ -1,0 +1,90 @@
+{
+  "appInfo" : {
+    "build" : "202.7660.26",
+    "buildDate" : "Tue, 6 Oct 2020 16:32:43 +0800",
+    "productCode" : "IU",
+    "generated" : "Sun, 17 Jan 2021 17:09:00 +0800",
+    "os" : "Windows 10 10.0",
+    "runtime" : "JetBrains s.r.o. 11.0.8 11.0.8+10-b944.34"
+  },
+  "runtimeInfo" : {
+    "maxMemory" : 536870912,
+    "numberOfProcessors" : 12,
+    "maxNumberOfIndexingThreads" : 4,
+    "maxSizeOfFileForIntelliSense" : 2560000,
+    "maxSizeOfFileForContentLoading" : 20971520
+  },
+  "projectIndexingHistory" : {
+    "projectName" : "empty",
+    "numberOfFileProviders" : 1,
+    "totalNumberOfFiles" : 1,
+    "times" : {
+      "indexingTime" : "4 s 497 ms",
+      "scanFilesTime" : "3 s 316 ms",
+      "pushPropertiesTime" : "552 ms",
+      "indexExtensionsTime" : "1 ms",
+      "pushPropertiesStart" : "Sun, 17 Jan 2021 17:08:56 +0800",
+      "pushPropertiesEnd" : "Sun, 17 Jan 2021 17:08:56 +0800",
+      "scanFilesStart" : "Sun, 17 Jan 2021 17:08:56 +0800",
+      "scanFilesEnd" : "Sun, 17 Jan 2021 17:08:59 +0800",
+      "indexExtensionsStart" : "Sun, 17 Jan 2021 17:08:56 +0800",
+      "indexExtensionsEnd" : "Sun, 17 Jan 2021 17:08:56 +0800",
+      "indexingStart" : "Sun, 17 Jan 2021 17:08:56 +0800",
+      "indexingEnd" : "Sun, 17 Jan 2021 17:09:00 +0800"
+    },
+    "numberOfIndexingThreads" : 4,
+    "totalStatsPerFileType" : [ {
+      "fileType" : "Kotlin",
+      "partOfTotalIndexingTime" : "100.0%",
+      "partOfTotalContentLoadingTime" : "100.0%",
+      "totalNumberOfFiles" : 1,
+      "totalFilesSize" : "5.5 kB",
+      "indexingSpeed" : "17.12 kB/s",
+      "biggestContributors" : [ {
+        "providerName" : "com.intellij.ide.scratch.ScratchFileServiceImpl$IndexSetContributor@1a97c817",
+        "numberOfFiles" : 1,
+        "totalFilesSize" : "5.5 kB",
+        "partOfTotalIndexingTimeOfThisFileType" : "100.0%"
+      } ]
+    } ],
+    "totalStatsPerIndexer" : [ {
+      "indexId" : "Stubs",
+      "partOfTotalIndexingTime" : "98.1%",
+      "totalNumberOfFiles" : 1,
+      "totalFilesSize" : "5.5 kB",
+      "indexingSpeed" : "17.45 kB/s"
+    }, {
+      "indexId" : "Trigram.Index",
+      "partOfTotalIndexingTime" : "1.8%",
+      "totalNumberOfFiles" : 1,
+      "totalFilesSize" : "5.5 kB",
+      "indexingSpeed" : "949.66 kB/s"
+    }, {
+      "indexId" : "org.jetbrains.kotlin.idea.vfilefinder.KotlinPackageSourcesMemberNamesIndex",
+      "partOfTotalIndexingTime" : "< 1%",
+      "totalNumberOfFiles" : 1,
+      "totalFilesSize" : "5.5 kB",
+      "indexingSpeed" : "14.11 MB/s"
+    } ],
+    "fileProviderStatistics" : [ {
+      "providerName" : "com.intellij.ide.scratch.ScratchFileServiceImpl$IndexSetContributor@1a97c817",
+      "totalNumberOfFiles" : 1,
+      "totalIndexingTime" : "596 ms",
+      "statsPerFileType" : [ {
+        "fileType" : "Kotlin",
+        "numberOfFiles" : 1,
+        "totalFilesSize" : "5.5 kB",
+        "partOfTotalIndexingTime" : "100.0%",
+        "partOfTotalContentLoadingTime" : "100.0%"
+      } ],
+      "statsPerIndexer" : [ {
+        "indexId" : "Stubs",
+        "partOfTotalIndexingTime" : "98.1%"
+      }, {
+        "indexId" : "Trigram.Index",
+        "partOfTotalIndexingTime" : "1.8%"
+      } ],
+      "fastIndexers" : [ "org.jetbrains.kotlin.idea.vfilefinder.KotlinPackageSourcesMemberNamesIndex" ]
+    } ]
+  }
+}

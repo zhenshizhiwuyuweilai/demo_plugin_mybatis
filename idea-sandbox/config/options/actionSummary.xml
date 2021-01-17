@@ -1,0 +1,27 @@
+<application>
+  <component name="ActionsLocalSummary">
+    <data>
+      <entry key="About">
+        <ActionSummary times="3" last="1610871620516" />
+      </entry>
+      <entry key="DelegateMethods">
+        <ActionSummary times="1" last="1610871735876" />
+      </entry>
+      <entry key="Generate">
+        <ActionSummary times="3" last="1610871749590" />
+      </entry>
+      <entry key="ShowSettings">
+        <ActionSummary times="1" last="1610871666515" />
+      </entry>
+      <entry key="WelcomeScreen.OpenProject">
+        <ActionSummary times="1" last="1610868221337" />
+      </entry>
+      <entry key="com.intellij.notification.NotificationAction$Simple">
+        <ActionSummary times="1" last="1610871617229" />
+      </entry>
+      <entry key="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
+        <ActionSummary times="2" last="1610884097825" />
+      </entry>
+    </data>
+  </component>
+</application>
