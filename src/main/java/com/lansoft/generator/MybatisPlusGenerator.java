@@ -73,95 +73,8 @@ public class MybatisPlusGenerator {
                 // to do nothing
             }
         };
-        // 如果模板引擎是 freemarker
-        String templateModelPath = ConstVal.TEMPLATE_ENTITY_JAVA + ".ftl";
-        String templateMapperPath = ConstVal.TEMPLATE_MAPPER + ".ftl";
-        String templateXmlPath = ConstVal.TEMPLATE_XML + ".ftl";
-//        String templateXmlPath = "/templates/mapper.xml.ftl";
-        // 如果模板引擎是 velocity
-        // String templatePath = "/templates/mapper.xml.vm";
-        // 自定义输出配置
-        List<FileOutConfig> focList = new ArrayList<>();
-        // 自定义配置会被优先输出（model）
-        focList.add(new FileOutConfig(templateModelPath) {
-            /**
-             * 输出文件
-             *
-             * @param tableInfo
-             */
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                StringBuilder src = new StringBuilder("/src/main/java/");
-                if (StringUtils.isNotBlank(mybatisConfig.getModelFolder())) {
-                    src = new StringBuilder(mybatisConfig.getModelFolder());
-                    if (StringUtils.isNotBlank(mybatisConfig.getModelPackage())) {
-                        final String[] split = mybatisConfig.getModelPackage().split("\\.");
-                        for (String s : split) {
-                            src.append("/").append(s);
-                        }
-                    } else {
-                        src.append("/com/lansoft/entity");
-                    }
-                }
-                String mapperPath = mybatisConfig.getProjectPath() + src + "/";
-                mapperPath += tableInfo.getEntityName() + StringPool.DOT_JAVA;
-                return mapperPath;
-            }
-        });
-
-        // 自定义配置会被优先输出（mapper）
-        focList.add(new FileOutConfig(templateMapperPath) {
-            /**
-             * 输出文件
-             *
-             * @param tableInfo
-             */
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                StringBuilder src = new StringBuilder("/src/main/java/");
-                if (StringUtils.isNotBlank(mybatisConfig.getMapperFolder())) {
-                    src = new StringBuilder(mybatisConfig.getMapperFolder());
-                    if (StringUtils.isNotBlank(mybatisConfig.getMapperPackage())) {
-                        final String[] split = mybatisConfig.getMapperPackage().split("\\.");
-                        for (String s : split) {
-                            src.append("/").append(s);
-                        }
-                    } else {
-                        src.append("/com/lansoft/mapper");
-                    }
-                }
-                String mapperPath = mybatisConfig.getProjectPath() + src + "/";
-                mapperPath += tableInfo.getEntityName() + "Mapper" + StringPool.DOT_JAVA;
-                return mapperPath;
-            }
-        });
-
-        // 自定义配置会被优先输出（mapper.xml）
-        focList.add(new FileOutConfig(templateXmlPath) {
-            @Override
-            public String outputFile(com.baomidou.mybatisplus.generator.config.po.TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                StringBuilder mapperSrc = new StringBuilder("/src/main/resources/mybatis/mapper/");
-                if (StringUtils.isNotBlank(mybatisConfig.getXmlFolder())) {
-                    mapperSrc = new StringBuilder(mybatisConfig.getXmlFolder());
-                    if (StringUtils.isNotBlank(mybatisConfig.getXmlPackage())) {
-                        final String[] split = mybatisConfig.getXmlPackage().split("\\.");
-                        for (String s : split) {
-                            mapperSrc.append("/").append(s);
-                        }
-                    } else {
-                        mapperSrc.append("/mybatis");
-                    }
-                }
-                String mapperPath = mybatisConfig.getProjectPath() + mapperSrc + "/";
-             /*   if (StringUtils.isNotBlank(pc.getModuleName())) {
-                    mapperPath += pc.getModuleName() + "/";
-                }*/
-                mapperPath += tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
-                return mapperPath;
-            }
-        });
-        cfg.setFileOutConfigList(focList);
+        //自定义文件输出配置(entity、mapper、xml)
+        cfg.setFileOutConfigList(MybatisPlusGenerator.fileOutConfig(mybatisConfig));
         mpg.setCfg(cfg);
 
         // 配置模板
@@ -210,9 +123,8 @@ public class MybatisPlusGenerator {
         for (LocalDataSource dataSource : dataSourceMap.keySet()) {
             // 数据源配置
             DataSourceConfig dsc = new DataSourceConfig();
-            dsc.setUrl(dataSource.getUrl());
-
             dsc.setDriverName(dataSource.getDriverClass());
+            dsc.setUrl(dataSource.getUrl());
             dsc.setUsername(dataSource.getUsername());
             final String password = dataSourceMap.get(dataSource);
             if (password == null) {

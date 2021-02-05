@@ -9624,3 +9624,190 @@ Max     duration: 242ms (it was 'Show UML Diagram action update (class com.intel
 2021-02-05 10:32:54,769 [ 543249]   INFO - plication.impl.ApplicationImpl - Global instance threads created counter = 25; ProcessIOExecutorService threads: 6 
 2021-02-05 10:32:54,770 [ 543250]   INFO -        #com.intellij.idea.Main - ------------------------------------------------------ IDE SHUTDOWN ------------------------------------------------------ 
 2021-02-05 10:32:54,773 [ 543253]   INFO - org.jetbrains.io.BuiltInServer - web server stopped 
+2021-02-05 11:07:42,116 [      0]   INFO -        #com.intellij.idea.Main - ------------------------------------------------------ IDE STARTED ------------------------------------------------------ 
+2021-02-05 11:07:42,192 [     76]   INFO -        #com.intellij.idea.Main - IDE: IntelliJ IDEA (build #IU-202.7660.26, 06 Oct 2020 16:32) 
+2021-02-05 11:07:42,194 [     78]   INFO -        #com.intellij.idea.Main - OS: Windows 10 (10.0, amd64) 
+2021-02-05 11:07:42,194 [     78]   INFO -        #com.intellij.idea.Main - JRE: 11.0.8+10-b944.34 (JetBrains s.r.o.) 
+2021-02-05 11:07:42,194 [     78]   INFO -        #com.intellij.idea.Main - JVM: 11.0.8+10-b944.34 (OpenJDK 64-Bit Server VM) 
+2021-02-05 11:07:42,195 [     79]   INFO -        #com.intellij.idea.Main - JVM Args: -Didea.auto.reload.plugins=true -Didea.classpath.index.enabled=false -Didea.config.path=D:\project\test_project\demo_plugin_mybatis\idea-sandbox\config -Didea.is.internal=true -Didea.plugins.path=D:\project\test_project\demo_plugin_mybatis\idea-sandbox\plugins -Didea.required.plugins.id=com.lansoft.custom_mybatis_plugin -Didea.system.path=D:\project\test_project\demo_plugin_mybatis\idea-sandbox\system -agentlib:jdwp=transport=dt_socket,server=n,suspend=y,address=60139 -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=CN -Duser.language=zh -Duser.variant -ea 
+2021-02-05 11:07:42,195 [     79]   INFO -        #com.intellij.idea.Main - library path: E:\gradle-6.7.1\repo\caches\modules-2\files-2.1\com.jetbrains\jbre\jbr-11_0_8-windows-x64-b944.34\jbr\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\VanDyke Software\SecureCRT\;C:\Program Files (x86)\NetSarang\Xshell 6\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\NetSarang\Xftp 6\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Java\jdk1.8.0_231\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\javaTool\WinSCP\;C:\Program Files\IDM Computer Solutions\UltraEdit;D:\javaTool\apache-maven-3.6.3\\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\javaTool\gradle-6.7.1\bin;C:\Program Files\Git\cmd;C:\Users\zhens\AppData\Local\Microsoft\WindowsApps;;D:\javaTool\DataGrip 2019.1\bin;;. 
+2021-02-05 11:07:42,196 [     80]   INFO -        #com.intellij.idea.Main - boot library path: E:\gradle-6.7.1\repo\caches\modules-2\files-2.1\com.jetbrains\jbre\jbr-11_0_8-windows-x64-b944.34\jbr\bin 
+2021-02-05 11:07:42,200 [     84]   INFO -        #com.intellij.idea.Main - locale=zh_CN JNU=GBK file.encoding=UTF-8
+  idea.config.path=D:\project\test_project\demo_plugin_mybatis\idea-sandbox\config
+  idea.system.path=D:\project\test_project\demo_plugin_mybatis\idea-sandbox\system
+  idea.plugins.path=D:\project\test_project\demo_plugin_mybatis\idea-sandbox\plugins
+  idea.log.path=D:\project\test_project\demo_plugin_mybatis\idea-sandbox\system/log 
+2021-02-05 11:07:42,558 [    442]   INFO -        #com.intellij.idea.Main - JNA library (64-bit) loaded in 358 ms 
+2021-02-05 11:07:42,568 [    452]   INFO - penapi.util.io.win32.IdeaWin32 - Native filesystem for Windows is operational 
+2021-02-05 11:07:43,735 [   1619]   INFO - ntellij.idea.ApplicationLoader - CPU cores: 12; ForkJoinPool.commonPool: java.util.concurrent.ForkJoinPool@66b23333[Running, parallelism = 11, size = 0, active = 0, running = 0, steals = 0, tasks = 0, submissions = 0]; factory: com.intellij.concurrency.IdeaForkJoinWorkerThreadFactory@2842feb6 
+2021-02-05 11:07:43,878 [   1762]   INFO - llij.ide.plugins.PluginManager - Loaded bundled plugins: IDEA CORE (202.7660.26), com.intellij.platform.images (202.7660.26), JetBrains maven model api classes (202.7660.26), JetBrains Repository Search (202.7660.26), HTML Tools (202.7660.26), Perforce (202.7660.26), Refactor-X (202.7660.26), Subversion (202.7660.26), XPathView + XSLT (202.7660.26), XSLT Debugger (202.7660.26), Smali Support (202.7660.26), IDE Settings Sync (202.7660.26), Configuration Script (202.7660.26), Copyright (202.7660.26), CSS (202.7660.26), W3C Validators (202.7660.26), Less (202.7660.26), Sass (202.7660.26), Stylus (202.7660.26), Gradle (202.7660.26), Java (202.7660.26), Bytecode Viewer (202.7660.26), JUnit (202.7660.26), ZKM-Unscramble (202.7660.26), Spring AOP/@AspectJ (202.7660.26), Dependency Structure Matrix (202.7660.26), Java IDE Customization (202.7660.26), Java Stream Debugger (202.7660.26), Eclipse Interoperability (202.7660.26), Java Bytecode Decompiler (202.7660.26), Recommenders for Java and Python (202.7660.26), macOS Light Theme (202.7660.26), Windows 10 Light Theme (202.7660.26), Properties (202.7660.26), Ant (202.7660.26), UML (202.7660.26), Guice (202.7660.26), Java Internationalization (202.7660.26), UI Designer (202.7660.26), Velocity (202.7660.26), Resource Bundle Editor (202.7660.26), Machine Learning Code Completion (202.7660.26), Task Management (202.7660.26), Time Tracking (202.7660.26), FTP/SFTP Connectivity (ex. Remote Hosts Access) (202.7660.26), Gherkin (202.7660.26), Cucumber for Java (202.7660.26), Mercurial (202.7660.26), Webp Support (202.7660.26), EditorConfig (202.7660.26), Haml (202.7660.26), Terminal (202.7660.26), Git (202.7660.26), ChangeReminder (202.7660.26), Next File Prediction (202.7660.26), GitHub (202.7660.26), Performance Testing (202.7660.26), Shared Indexes (202.7660.26), SSH Remote Run (202.7660.26), WSL Support Framework (202.7660.26), Shell Script (202.7660.26), TextMate Bundles (202.7660.26), YAML (202.7660.26), Docker (202.7660.26), Microservices Application Configuration (202.7660.26), Settings Repository (202.7660.26), IntelliLang (202.7660.26), TestNG (202.7660.26), Code Coverage for Java (202.7660.26), Emma (202.7660.26), Groovy (202.7660.26), Cucumber for Groovy (202.7660.26), Maven (202.7660.26), AspectJ (202.7660.26), Gradle-Java (202.7660.26), Plugin DevKit (202.7660.26), Gradle Extension (202.7660.26), Frameworks Starters (202.7660.26), Gradle-Maven (202.7660.26), Reactive Streams (Reactor, RxJava) (202.7660.26), JavaFX (202.7660.26), Markdown (202.7660.26), Grazie (202.7660.26), JavaScript and TypeScript (202.7660.26), JavaScript Intention Power Pack (202.7660.26), TSLint (202.7660.26), Angular and AngularJS (202.7660.26), Database Tools and SQL (202.7660.26), Java SQL Libraries (202.7660.26), Persistence Frameworks (202.7660.26), Java EE Platform (202.7660.26), JavaScript Debugger (202.7660.26), Node.js (202.7660.26), Spy-js (202.7660.26), CoffeeScript (202.7660.26), Kotlin (1.3.72-release-IJ2020.1-6), Android (10.4.0.202.7660.26), Java EE: Persistence (JPA) (202.7660.26), Java EE: Enterprise Java Beans (EJB) (202.7660.26), Hibernate (202.7660.26), Java EE: Bean Validation (202.7660.26), Java EE: Contexts and Dependency Injection (CDI) (202.7660.26), Helidon (202.7660.26), Java EE: Batch Applications (202.7660.26), Java EE: Application Servers Integration (202.7660.26), GlassFish (202.7660.26), WildFly (202.7660.26), Debugger Support for JSP (JSR45) (202.7660.26), Jetty (202.7660.26), Tomcat and TomEE (202.7660.26), WebSphere (202.7660.26), WebLogic (202.7660.26), Java EE: Web/Servlets (202.7660.26), Java Server Pages (JSP) (202.7660.26), Java EE: Server Faces (JSF) (202.7660.26), Application Servers View (202.7660.26), Java EE: Message Service (JMS) (202.7660.26), Java EE: WebSockets (202.7660.26), JBoss Frameworks Base (202.7660.26), Drools (202.7660.26), Arquillian (202.7660.26), Java EE: Gradle Integration (202.7660.26), Spring (202.7660.26), Spring Security (202.7660.26), Thymeleaf (202.7660.26), Spring Data (202.7660.26), Java EE: Web Services (JAX-WS) (202.7660.26), Spring Web Services (202.7660.26), Grails (202.7660.26), FreeMarker (202.7660.26), Spring Batch (202.7660.26), Spring Messaging (202.7660.26), Spring Integration Patterns (202.7660.26), Spring WebSocket (202.7660.26), Spring OSGi (202.7660.26), Maven Extension (202.7660.26), HTTP Client (202.7660.26), Spring MVC (202.7660.26), Spring Web Flow (202.7660.26), Spring Boot (202.7660.26), Java EE: RESTful Web Services (JAX-RS) (202.7660.26), Quarkus (202.7660.26), Micronaut (202.7660.26), Java HTTP Clients (202.7660.26), OpenAPI Specifications (202.7660.26) 
+2021-02-05 11:07:43,878 [   1762]   INFO - llij.ide.plugins.PluginManager - Loaded custom plugins: Custom MybatisPlus Generator (1.0-SNAPSHOT) 
+2021-02-05 11:07:44,045 [   1929]   INFO - cloudConfig.CloudConfigManager - === Exit: JBA_NOT_FOUND === 
+2021-02-05 11:07:44,330 [   2214]   INFO - m.intellij.util.io.StorageLock - lower=100; upper=492; buffer=10; max=492 
+2021-02-05 11:07:44,348 [   2232]   INFO - tellij.util.io.FileChannelUtil - un-interruptible FileChannel-s will be used for indexes 
+2021-02-05 11:07:44,364 [   2248]   INFO - til.net.ssl.CertificateManager - Default SSL context initialized 
+2021-02-05 11:07:44,444 [   2328]   WARN - j.internal.DebugAttachDetector - Unable to start DebugAttachDetector, please add `--add-exports java.base/jdk.internal.vm=ALL-UNNAMED` to VM options 
+2021-02-05 11:07:44,508 [   2392]   INFO - com.intellij.ide.ui.UISettings - Loaded: fontSize=13, fontScale=1.0; restored: fontSize=13, fontScale=1.0 
+2021-02-05 11:07:44,567 [   2451]   INFO - org.jetbrains.io.BuiltInServer - We cannot bind to our default range, so, try to bind to any free port 
+2021-02-05 11:07:44,575 [   2459]   INFO - rains.ide.BuiltInServerManager - built-in server started, port 60159 
+2021-02-05 11:07:44,789 [   2673]   INFO - gs.impl.UpdateCheckerComponent - channel: release 
+2021-02-05 11:07:44,866 [   2750]   INFO - atform.impl.SharedIndexStorage - Shared Indexes Storage is opened: <empty> 
+2021-02-05 11:07:45,087 [   2971]   INFO - BridgeProjectLifecycleListener - Using legacy project model to open project 
+2021-02-05 11:07:45,527 [   3411]   INFO - pl.local.NativeFileWatcherImpl - Starting file watcher: E:\gradle-6.7.1\repo\caches\modules-2\files-2.1\com.jetbrains.intellij.idea\ideaIU\2020.2.3\5d73e54c0f8f8bc6122ef8f066a640e44b9bef1a\ideaIU-2020.2.3\bin\win\fsnotifier64.exe 
+2021-02-05 11:07:45,594 [   3478]   INFO - pl.local.NativeFileWatcherImpl - Native file watcher is operational. 
+2021-02-05 11:07:46,319 [   4203]   INFO - rojectCodeStyleSettingsManager - Initialized from default code style settings. 
+2021-02-05 11:07:46,464 [   4348]   WARN - Container.ComponentManagerImpl - Do not use constructor injection (requestorClass=org.jetbrains.android.compose.AndroidComposeAutoDocumentation) 
+2021-02-05 11:07:46,483 [   4367]   INFO - penapi.application.Experiments - Experimental features enabled for user: wsl.p9.support, wsl.p9.show.roots.in.file.chooser, inline.browse.button, linux.native.menu, recent.and.edited.files.together, show.create.new.element.in.popup, copy.reference.popup, new.large.text.file.viewer, property.value.inplace.editing, terminal.shell.command.handling 
+2021-02-05 11:07:47,739 [   5623]   INFO - j.ide.script.IdeStartupScripts - 0 startup script(s) found 
+2021-02-05 11:07:47,860 [   5744]   WARN - tartup.impl.StartupManagerImpl - Activities registered via registerPostStartupActivity must be dumb-aware: org.jetbrains.kotlin.idea.configuration.ui.KotlinConfigurationCheckerComponent$projectOpened$1@76a899b7 
+2021-02-05 11:07:50,029 [   7913]   INFO - leBasedIndexDataInitialization - Initialization done: 5490 
+2021-02-05 11:07:51,570 [   9454]   INFO -              PerformancePlugin - Performance Plugin is in silent mode 
+2021-02-05 11:07:53,429 [  11313]   INFO - exImpl$StubIndexInitialization - Initialization done: 3399 
+2021-02-05 11:07:53,535 [  11419]   INFO - ge.ExternalProjectsDataStorage - Load external projects data in 6 millis (read time: 2) 
+2021-02-05 11:07:53,559 [  11443]   INFO - cloudConfig.CloudConfigManager - === StatusBar ignored === 
+2021-02-05 11:07:53,696 [  11580]   INFO - .OnDiskSharedIndexChunkLocator - Scanning D:\project\test_project\demo_plugin_mybatis\idea-sandbox\system\shared-index for shared indexes... 
+2021-02-05 11:07:53,830 [  11714]   INFO - ProjectRootPostStartUpActivity - D:/project/test_project/empty/.idea case-sensitivity: expected=false actual=false 
+2021-02-05 11:07:53,852 [  11736]   INFO - .diagnostic.PerformanceWatcher - Post-startup activities under progress took 1784ms; general responsiveness: ok; EDT responsiveness: 0/2 sluggish, 2/2 very slow 
+2021-02-05 11:07:53,929 [  11813]   INFO - CompilerWorkspaceConfiguration - Available processors: 12 
+2021-02-05 11:07:55,742 [  13626]   INFO - tor.impl.FileEditorManagerImpl - Project opening took 10774 ms 
+2021-02-05 11:07:55,857 [  13741]   INFO - roject.DumbServiceGuiTaskQueue - Running dumb mode task: com.intellij.util.indexing.UnindexedFilesUpdater@66e3e8a2 
+2021-02-05 11:07:56,320 [  14204]   INFO - llij.database.util.SqlDialects - SQL dialects initialized in 2 ms 
+2021-02-05 11:07:56,573 [  14457]   WARN - com.intellij.util.xmlb.Binding - no accessors for org.jetbrains.kotlin.idea.highlighter.KotlinDefaultHighlightingSettingsProvider 
+2021-02-05 11:07:57,203 [  15087]   INFO - .diagnostic.PerformanceWatcher - Pushing properties took 1297ms; general responsiveness: ok; EDT responsiveness: ok 
+2021-02-05 11:07:57,667 [  15551]   INFO - red.download.SharedIndexLookup - No indexes available for https://index-cdn.jetbrains.com/v2/jdk/c61aa1fde2ef92a897f2ebf0d23e80471db1f6b1/index.json.xz for JdkIndexRequest(sdkName=1.8, hash=c61aa1fde2ef92a897f2ebf0d23e80471db1f6b1, aliases=[1.8.0_231, 1.8], innerVersion='v2', kind='jdk'). 403 
+2021-02-05 11:07:58,692 [  16576]   INFO - red.download.SharedIndexLookup - No indexes available for https://index-cdn.jetbrains.com/v2/jdk/-1.8.0_231/index.json.xz for JdkIndexRequest(sdkName=1.8, hash=c61aa1fde2ef92a897f2ebf0d23e80471db1f6b1, aliases=[1.8.0_231, 1.8], innerVersion='v2', kind='jdk'). 403 
+2021-02-05 11:07:59,480 [  17364]   INFO - red.download.SharedIndexLookup - Downloaded the https://index-cdn.jetbrains.com/v2/jdk/-1.8/index.json.xz for JdkIndexRequest(sdkName=1.8, hash=c61aa1fde2ef92a897f2ebf0d23e80471db1f6b1, aliases=[1.8.0_231, 1.8], innerVersion='v2', kind='jdk')... 
+2021-02-05 11:07:59,680 [  17564]   INFO - red.download.SharedIndexLookup - Detected 26 batches for the https://index-cdn.jetbrains.com/v2/jdk/-1.8/index.json.xz for JdkIndexRequest(sdkName=1.8, hash=c61aa1fde2ef92a897f2ebf0d23e80471db1f6b1, aliases=[1.8.0_231, 1.8], innerVersion='v2', kind='jdk') 
+2021-02-05 11:07:59,738 [  17622]   INFO - red.download.SharedIndexLookup - No matching index found for JdkIndexRequest(sdkName=1.8, hash=c61aa1fde2ef92a897f2ebf0d23e80471db1f6b1, aliases=[1.8.0_231, 1.8], innerVersion='v2', kind='jdk') 
+2021-02-05 11:07:59,817 [  17701]   INFO - gnostic.WindowsDefenderChecker - Windows Defender status: not used 
+2021-02-05 11:08:03,110 [  20994]   INFO - .diagnostic.PerformanceWatcher - Indexable file iteration took 5906ms; general responsiveness: ok; EDT responsiveness: ok 
+2021-02-05 11:08:03,122 [  21006]   INFO - indexing.UnindexedFilesUpdater - Unindexed files update started: 0 files to index 
+2021-02-05 11:08:03,125 [  21009]   INFO - penapi.project.DumbServiceImpl - updateFinished 
+2021-02-05 11:08:03,137 [  21021]   INFO - g.FileBasedIndexProjectHandler - Has changed files: false; project=Project(name=empty, containerState=ACTIVE, componentStore=D:\project\test_project\empty) 
+2021-02-05 11:08:03,383 [  21267]   INFO - roject.DumbServiceGuiTaskQueue - Running dumb mode task: com.android.tools.idea.res.ResourceFolderRepositoryFileCacheImpl$PruneTask@3e58aa57 
+2021-02-05 11:08:03,386 [  21270]   INFO - roject.DumbServiceGuiTaskQueue - Running dumb mode task: com.android.tools.idea.res.ResourceFolderRepositoryFileCacheImpl$ManageLruProjectFilesTask@571806ea 
+2021-02-05 11:08:03,469 [  21353]   INFO - penapi.project.DumbServiceImpl - updateFinished 
+2021-02-05 11:08:03,470 [  21354]   INFO - g.FileBasedIndexProjectHandler - Has changed files: false; project=Project(name=empty, containerState=ACTIVE, componentStore=D:\project\test_project\empty) 
+2021-02-05 11:08:03,510 [  21394]   INFO - roject.DumbServiceGuiTaskQueue - Running dumb mode task: com.android.tools.idea.res.ResourceFolderRegistry$PopulateCachesTask@317ae71 
+2021-02-05 11:08:03,563 [  21447]   INFO - penapi.project.DumbServiceImpl - updateFinished 
+2021-02-05 11:08:03,564 [  21448]   INFO - g.FileBasedIndexProjectHandler - Has changed files: false; project=Project(name=empty, containerState=ACTIVE, componentStore=D:\project\test_project\empty) 
+2021-02-05 11:08:09,156 [  27040]   INFO - .diagnostic.PerformanceWatcher - Searching for external libraries with Android resources. Found 0 libraries. took 13ms; general responsiveness: ok; EDT responsiveness: ok 
+2021-02-05 11:08:23,838 [  41722]   INFO - nSession$CountedThreadExecutor - DbSrcWriter stopped 
+2021-02-05 11:10:00,362 [ 138246]   INFO -                         STDERR - SLF4J: Class path contains multiple SLF4J bindings. 
+2021-02-05 11:10:00,362 [ 138246]   INFO -                         STDERR - SLF4J: Found binding in [jar:file:/D:/project/test_project/demo_plugin_mybatis/idea-sandbox/plugins/MybatisPlus/lib/log4j-slf4j-impl-2.13.3.jar!/org/slf4j/impl/StaticLoggerBinder.class] 
+2021-02-05 11:10:00,363 [ 138247]   INFO -                         STDERR - SLF4J: Found binding in [jar:file:/E:/gradle-6.7.1/repo/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIU/2020.2.3/5d73e54c0f8f8bc6122ef8f066a640e44b9bef1a/ideaIU-2020.2.3/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class] 
+2021-02-05 11:10:00,363 [ 138247]   INFO -                         STDERR - SLF4J: Found binding in [jar:file:/E:/gradle-6.7.1/repo/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIU/2020.2.3/5d73e54c0f8f8bc6122ef8f066a640e44b9bef1a/ideaIU-2020.2.3/plugins/maven/lib/maven36-server-impl.jar!/org/slf4j/impl/StaticLoggerBinder.class] 
+2021-02-05 11:10:00,363 [ 138247]   INFO -                         STDERR - SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation. 
+2021-02-05 11:10:00,366 [ 138250]   INFO -                         STDERR - SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory] 
+2021-02-05 11:10:00,375 [ 138259]   INFO -                         STDOUT - WARNING: sun.reflect.Reflection.getCallerClass is not supported. This will impact performance. 
+2021-02-05 11:10:15,258 [ 153142]   WARN - util.DeprecatedMethodException - The default implementation of method 'com.intellij.execution.configurations.ConfigurationFactory.getId' is deprecated, you need to override it in 'class org.jetbrains.kotlin.idea.nodejs.protractor.KotlinProtractorConfigurationType$1'. The default implementation delegates to 'getName' which may be localized but return value of this method must not depend on current localization. 
+com.intellij.util.DeprecatedMethodException: The default implementation of method 'com.intellij.execution.configurations.ConfigurationFactory.getId' is deprecated, you need to override it in 'class org.jetbrains.kotlin.idea.nodejs.protractor.KotlinProtractorConfigurationType$1'. The default implementation delegates to 'getName' which may be localized but return value of this method must not depend on current localization.
+	at com.intellij.util.DeprecatedMethodException.reportDefaultImplementation(DeprecatedMethodException.java:38)
+	at com.intellij.execution.configurations.ConfigurationFactory.getId(ConfigurationFactory.java:80)
+	at com.intellij.execution.impl.RunManagerImplKt.getFactoryKey(RunManagerImpl.kt:1313)
+	at com.intellij.execution.impl.RunManagerImplKt.access$getFactoryKey(RunManagerImpl.kt:1)
+	at com.intellij.execution.impl.RunManagerImpl.getConfigurationTemplate(RunManagerImpl.kt:326)
+	at com.intellij.execution.impl.RunManagerImpl.createConfiguration(RunManagerImpl.kt:251)
+	at com.intellij.execution.actions.RunConfigurationProducer.cloneTemplateConfigurationStatic(RunConfigurationProducer.java:258)
+	at com.intellij.execution.actions.RunConfigurationProducer.cloneTemplateConfiguration(RunConfigurationProducer.java:248)
+	at com.intellij.execution.actions.RunConfigurationProducer.createConfigurationFromContext(RunConfigurationProducer.java:97)
+	at com.intellij.execution.actions.RunConfigurationProducer.findOrCreateConfigurationFromContext(RunConfigurationProducer.java:198)
+	at com.intellij.execution.actions.PreferredProducerFind.doGetConfigurationsFromContext(PreferredProducerFind.java:110)
+	at com.intellij.execution.actions.PreferredProducerFind.getConfigurationsFromContext(PreferredProducerFind.java:93)
+	at com.intellij.execution.actions.PreferredProducerFind.findConfigurationFromContext(PreferredProducerFind.java:135)
+	at com.intellij.execution.actions.PreferredProducerFind.createConfiguration(PreferredProducerFind.java:32)
+	at com.intellij.execution.actions.ConfigurationContext.createConfiguration(ConfigurationContext.java:160)
+	at com.intellij.execution.actions.ConfigurationContext.getConfiguration(ConfigurationContext.java:151)
+	at com.intellij.execution.actions.BaseRunConfigurationAction.fullUpdate(BaseRunConfigurationAction.java:238)
+	at com.intellij.execution.actions.BaseRunConfigurationAction.update(BaseRunConfigurationAction.java:202)
+	at com.intellij.openapi.actionSystem.ex.ActionUtil.performDumbAwareUpdate(ActionUtil.java:179)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doUpdate(ActionUpdater.java:453)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$new$1(ActionUpdater.java:94)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.callAction(ActionUpdater.java:134)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$new$2(ActionUpdater.java:95)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.update(ActionUpdater.java:435)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:297)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$19(ActionUpdater.java:276)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1611)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:276)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:327)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$19(ActionUpdater.java:276)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1611)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:276)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:327)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$19(ActionUpdater.java:276)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1611)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:276)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:327)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$19(ActionUpdater.java:276)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1611)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:276)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:327)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$19(ActionUpdater.java:276)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1611)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:276)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandActionGroup(ActionUpdater.java:186)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandActionGroup(ActionUpdater.java:160)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$expandActionGroupWithTimeout$11(ActionUpdater.java:202)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$0(ProgressManager.java:56)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:170)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:629)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:581)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:157)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:56)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.withTimeout(ProgressIndicatorUtils.java:307)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandActionGroupWithTimeout(ActionUpdater.java:202)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandActionGroupWithTimeout(ActionUpdater.java:194)
+	at com.intellij.openapi.actionSystem.impl.Utils.fillMenu(Utils.java:98)
+	at com.intellij.openapi.actionSystem.impl.ActionPopupMenuImpl$MyMenu.show(ActionPopupMenuImpl.java:118)
+	at com.intellij.ui.PopupHandler$2.invokePopup(PopupHandler.java:88)
+	at com.intellij.ui.PopupHandler.mouseReleased(PopupHandler.java:48)
+	at java.desktop/java.awt.AWTEventMulticaster.mouseReleased(AWTEventMulticaster.java:298)
+	at java.desktop/java.awt.AWTEventMulticaster.mouseReleased(AWTEventMulticaster.java:297)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6654)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3345)
+	at com.intellij.ui.treeStructure.Tree.processMouseEvent(Tree.java:381)
+	at com.intellij.ide.dnd.aware.DnDAwareTree.processMouseEvent(DnDAwareTree.java:44)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6419)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2263)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5029)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2321)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4861)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4918)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4547)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4488)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2307)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2773)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4861)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:778)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:727)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:95)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:751)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:749)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:748)
+	at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.java:971)
+	at com.intellij.ide.IdeEventQueue.dispatchMouseEvent(IdeEventQueue.java:906)
+	at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.java:838)
+	at com.intellij.ide.IdeEventQueue.lambda$dispatchEvent$8(IdeEventQueue.java:452)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computePrioritized(CoreProgressManager.java:744)
+	at com.intellij.ide.IdeEventQueue.lambda$dispatchEvent$9(IdeEventQueue.java:451)
+	at com.intellij.openapi.application.impl.ApplicationImpl.runIntendedWriteActionOnCurrentThread(ApplicationImpl.java:802)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.java:505)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+2021-02-05 11:10:19,143 [ 157027]   INFO - roject.DumbServiceGuiTaskQueue - Running dumb mode task: com.intellij.openapi.roots.impl.PushedFilePropertiesUpdaterImpl$3@2b4a3700 
+2021-02-05 11:10:19,180 [ 157064]   INFO - penapi.project.DumbServiceImpl - updateFinished 
+2021-02-05 11:10:19,180 [ 157064]   INFO - g.FileBasedIndexProjectHandler - Has changed files: false; project=Project(name=empty, containerState=ACTIVE, componentStore=D:\project\test_project\empty) 
+2021-02-05 11:10:21,418 [ 159302]   INFO - rationStore.ComponentStoreImpl - Saving appFileTypeManager took 13 ms 
+2021-02-05 11:10:21,974 [ 159858]   INFO - rationStore.ComponentStoreImpl - Saving Project(name=empty, containerState=ACTIVE, componentStore=D:\project\test_project\empty)KotlinCompilerSettings took 12 ms, RunManager took 114 ms 
+2021-02-05 11:12:01,747 [ 259631]   INFO - rationStore.ComponentStoreImpl - Saving Project(name=empty, containerState=ACTIVE, componentStore=D:\project\test_project\empty)RunManager took 19 ms 

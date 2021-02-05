@@ -136,7 +136,7 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
         //实行生成操作
         MybatisPlusGenerator.generatorCode(mybatisConfig);
         //显示通知窗口
-        Messages.showMessageDialog("mybatisPlus生成完成", "测试通知效果", Messages.getInformationIcon());
+        Messages.showMessageDialog("Mybatis生成完成", "Mybatis通知效果", Messages.getInformationIcon());
 //        if (this.getOKAction().isEnabled()) {
 //            System.out.println("===================start=================");
 //            System.out.println(toString());
