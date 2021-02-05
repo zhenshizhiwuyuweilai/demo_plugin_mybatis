@@ -9,9 +9,6 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.intellij.database.psi.DbTable;
 import com.intellij.psi.PsiElement;
-import com.intellij.spring.model.utils.SpringBeanUtils;
-import com.intellij.spring.model.xml.util.SpringUtilElement;
-import com.lansoft.model.TableInfo;
 import com.lansoft.service.MybatisPlusGeneratorService;
 import org.apache.commons.lang.StringUtils;
 
@@ -24,15 +21,19 @@ import java.util.List;
  * @Author 郭伟东
  * @Date 2021/1/24  14:21
  */
+@Deprecated
 public class MybatisPlusGeneratorServiceImpl implements MybatisPlusGeneratorService {
 
     private PsiElement[] psiElements;
+    private String projectPath;
 
     public MybatisPlusGeneratorServiceImpl(PsiElement[] psiElements) {
         this.psiElements = psiElements;
     }
 
-    public void generatorCode() {
+    @Override
+    public void generatorCode(String projectFilePath) {
+        this.projectPath = projectFilePath;
         ArrayList<String> list = new ArrayList<>();
         for (PsiElement psiElement : psiElements) {
 //            TableInfo tableInfo = new TableInfo((DbTable) psiElement);
@@ -49,12 +50,13 @@ public class MybatisPlusGeneratorServiceImpl implements MybatisPlusGeneratorServ
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         mpg.setGlobalConfig(gc);
-        String projectPath = System.getProperty("user.dir");
+//        String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("郭伟东");
         gc.setOpen(false);
         gc.setBaseResultMap(true);
         gc.setBaseColumnList(true);
+        gc.setFileOverride(true);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
@@ -88,7 +90,7 @@ public class MybatisPlusGeneratorServiceImpl implements MybatisPlusGeneratorServ
             @Override
             public String outputFile(com.baomidou.mybatisplus.generator.config.po.TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                String mapperPath = projectPath + "/src/main/resources/mapper/";
+                String mapperPath = projectFilePath + "/src/main/resources/mapper/";
                 if (StringUtils.isNotBlank(pc.getModuleName())) {
                     mapperPath += pc.getModuleName() + "/";
                 }
@@ -105,8 +107,9 @@ public class MybatisPlusGeneratorServiceImpl implements MybatisPlusGeneratorServ
         // 配置自定义输出模板
         //指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
         // templateConfig.setEntity("templates/entity2.java");
-        // templateConfig.setService();
-        // templateConfig.setController();
+        templateConfig.setController(null);
+        templateConfig.setService(null);
+        templateConfig.setServiceImpl(null);
         templateConfig.setXml(null);
         mpg.setTemplate(templateConfig);
 

@@ -1,17 +1,50 @@
 <application>
   <component name="ActionsLocalSummary">
     <data>
+      <entry key="$Copy">
+        <ActionSummary times="1" last="1612083797458" />
+      </entry>
+      <entry key="$Delete">
+        <ActionSummary times="13" last="1612492302373" />
+      </entry>
       <entry key="About">
-        <ActionSummary times="3" last="1610871620516" />
+        <ActionSummary times="4" last="1612083387662" />
+      </entry>
+      <entry key="CopyAbsolutePath">
+        <ActionSummary times="2" last="1612083689058" />
+      </entry>
+      <entry key="CopyReferencePopup">
+        <ActionSummary times="3" last="1612083684673" />
+      </entry>
+      <entry key="DatabaseView.Refresh">
+        <ActionSummary times="2" last="1612106331198" />
       </entry>
       <entry key="DelegateMethods">
         <ActionSummary times="1" last="1610871735876" />
       </entry>
+      <entry key="EditorBackSpace">
+        <ActionSummary times="16" last="1612087505523" />
+      </entry>
+      <entry key="EditorPaste">
+        <ActionSummary times="5" last="1612083699153" />
+      </entry>
       <entry key="Generate">
         <ActionSummary times="3" last="1610871749590" />
       </entry>
+      <entry key="ProjectView.HideEmptyMiddlePackages">
+        <ActionSummary times="1" last="1612087669034" />
+      </entry>
+      <entry key="RevealIn">
+        <ActionSummary times="1" last="1612455770950" />
+      </entry>
+      <entry key="ShowProjectStructureSettings">
+        <ActionSummary times="1" last="1611479147278" />
+      </entry>
       <entry key="ShowSettings">
         <ActionSummary times="1" last="1610871666515" />
+      </entry>
+      <entry key="SynchronizeCurrentFile">
+        <ActionSummary times="8" last="1612456342936" />
       </entry>
       <entry key="WelcomeScreen.OpenProject">
         <ActionSummary times="1" last="1610868221337" />
@@ -21,6 +54,9 @@
       </entry>
       <entry key="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
         <ActionSummary times="2" last="1610884097825" />
+      </entry>
+      <entry key="com.intellij.openapi.wm.impl.ToolWindowHeader$ShowOptionsAction">
+        <ActionSummary times="4" last="1612087675052" />
       </entry>
     </data>
   </component>

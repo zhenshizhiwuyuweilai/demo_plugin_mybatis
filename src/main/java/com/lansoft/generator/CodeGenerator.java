@@ -46,12 +46,15 @@ public class CodeGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
+        mpg.setGlobalConfig(gc);
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("jobob");
         gc.setOpen(false);
-        // gc.setSwagger2(true); 实体属性 Swagger2 注解
-        mpg.setGlobalConfig(gc);
+//        gc.setActiveRecord(true);
+        gc.setFileOverride(true);
+        gc.setBaseResultMap(true);
+        gc.setBaseColumnList(true);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
@@ -140,8 +143,9 @@ public class CodeGenerator {
         // 公共父类
 //            strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("id");
-        strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
+//        strategy.setSuperEntityColumns("id");
+//        strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
+        strategy.setInclude("INTER_JS_SEND_MAIN");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
