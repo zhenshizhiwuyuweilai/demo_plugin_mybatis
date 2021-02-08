@@ -52,6 +52,8 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
     private JCheckBox isService;
     private JCheckBox isUpperCamelCase;
     private JList<String> selectedtableName;
+    private JComboBox<String> pluginType;
+    private JFormattedTextField formattedTextField1;
 
 
     public MybatisGeneratorMainUI(PsiElement[] psiElements, Project project) {
@@ -82,6 +84,7 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
         xmlFText.setText("/src/main/resources");
         isLombok.setSelected(true);
         isUpperCamelCase.setSelected(true);
+
     }
 
     /**

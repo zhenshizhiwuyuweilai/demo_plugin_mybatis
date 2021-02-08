@@ -15,6 +15,7 @@ import com.intellij.database.psi.DbTableImpl;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.PsiElement;
 import com.lansoft.model.MybatisConfig;
+import com.lansoft.utils.FileUtil;
 import org.apache.commons.lang.StringUtils;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.*;
@@ -37,194 +38,76 @@ import java.util.Map;
  */
 public class MybatisGenerator {
 
+    /**
+     *
+     * @param mybatisConfig
+     */
+    public static void build(MybatisConfig mybatisConfig) {
+        final MybatisGenerator generator = new MybatisGenerator();
+        generator.generatorCode(mybatisConfig);
+    }
+//
+//    public MybatisGenerator(MybatisConfig mybatisConfig) {
+//        generatorCode(mybatisConfig);
+//    }
+
+    //idea中持久化配置数据方法
 //String configJson = PropertiesComponent.getInstance().getValue(GEN_CONFIG);
-    public static void generatorCode(MybatisConfig mybatisConfig) {
-        try {
-            List<String> warnings = new ArrayList<String>();
-            boolean overwrite = true;
-            Configuration config = new Configuration();
-
-
-            //   ... fill out the config object as appropriate...
-
-            DefaultShellCallback callback = new DefaultShellCallback(overwrite);
-            MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
-            myBatisGenerator.generate(null);
-
-        } catch (InvalidConfigurationException e) {
-            e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    /**
-     * 获取数据源配置信息
-     * System.out.println(delegate.getUrl());
-     * System.out.println(delegate.getUsername());
-     * System.out.println(password);
-     *
-     * @param psiElements
-     * @return
-     */
-    public static Map<LocalDataSource, String> getDataSourceConfig(PsiElement[] psiElements) {
-        Map<LocalDataSource, String> map = new HashMap<>(5);
-        if (psiElements != null) {
-            final DatabaseCredentials databaseCredentials = DatabaseCredentials.getInstance();
-            for (PsiElement psiElement : psiElements) {
-                //DbElementImpl
-                final DbTableImpl table = (DbTableImpl) psiElement;
-                final DbDataSourceImpl dataSource = table.getDataSource();
-                final LocalDataSource delegate = (LocalDataSource) (dataSource.getDelegate());
-                OneTimeString password = databaseCredentials.getPassword(delegate);
-                //当密码不为空时记录数据库密码
-                if (password != null) {
-                    if (!map.containsKey(delegate)) {
-                        map.put(delegate, password.toString());
-                    }
-                } else {
-                    if (!map.containsKey(delegate)) {
-                        map.put(delegate, null);
-                    }
-                }
-            }
-        }
-        return map;
-    }
-
-    /**
-     * 自定义文件输出配置
-     *
-     * @param mybatisConfig mybatis 配置
-     * @return
-     */
-    public static List<FileOutConfig> fileOutConfig(MybatisConfig mybatisConfig) {
-        // 如果模板引擎是 freemarker
-        String templateModelPath = ConstVal.TEMPLATE_ENTITY_JAVA + ".ftl";
-        String templateMapperPath = ConstVal.TEMPLATE_MAPPER + ".ftl";
-        String templateXmlPath = ConstVal.TEMPLATE_XML + ".ftl";
-//        String templateXmlPath = "/templates/mapper.xml.ftl";
-        // 如果模板引擎是 velocity
-        // String templatePath = "/templates/mapper.xml.vm";
-        // 自定义输出配置
-        List<FileOutConfig> focList = new ArrayList<>();
-        // 自定义配置会被优先输出（model）
-        focList.add(new FileOutConfig(templateModelPath) {
-            /**
-             * 输出文件
-             *
-             * @param tableInfo
-             */
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                StringBuilder src = new StringBuilder("/src/main/java/");
-                if (StringUtils.isNotBlank(mybatisConfig.getModelFolder())) {
-                    src = new StringBuilder(mybatisConfig.getModelFolder());
-                    if (StringUtils.isNotBlank(mybatisConfig.getModelPackage())) {
-                        final String[] split = mybatisConfig.getModelPackage().split("\\.");
-                        for (String s : split) {
-                            src.append("/").append(s);
-                        }
-                    } else {
-                        src.append("/com/lansoft/entity");
-                    }
-                }
-                String mapperPath = mybatisConfig.getProjectPath() + src + "/";
-                mapperPath += tableInfo.getEntityName() + StringPool.DOT_JAVA;
-                return mapperPath;
-            }
-        });
-
-        // 自定义配置会被优先输出（mapper）
-        focList.add(new FileOutConfig(templateMapperPath) {
-            /**
-             * 输出文件
-             *
-             * @param tableInfo
-             */
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                StringBuilder src = new StringBuilder("/src/main/java/");
-                if (StringUtils.isNotBlank(mybatisConfig.getMapperFolder())) {
-                    src = new StringBuilder(mybatisConfig.getMapperFolder());
-                    if (StringUtils.isNotBlank(mybatisConfig.getMapperPackage())) {
-                        final String[] split = mybatisConfig.getMapperPackage().split("\\.");
-                        for (String s : split) {
-                            src.append("/").append(s);
-                        }
-                    } else {
-                        src.append("/com/lansoft/mapper");
-                    }
-                }
-                String mapperPath = mybatisConfig.getProjectPath() + src + "/";
-                mapperPath += tableInfo.getEntityName() + "Mapper" + StringPool.DOT_JAVA;
-                return mapperPath;
-            }
-        });
-
-        // 自定义配置会被优先输出（mapper.xml）
-        focList.add(new FileOutConfig(templateXmlPath) {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                StringBuilder mapperSrc = new StringBuilder("/src/main/resources/mybatis/mapper/");
-                if (StringUtils.isNotBlank(mybatisConfig.getXmlFolder())) {
-                    mapperSrc = new StringBuilder(mybatisConfig.getXmlFolder());
-                    if (StringUtils.isNotBlank(mybatisConfig.getXmlPackage())) {
-                        final String[] split = mybatisConfig.getXmlPackage().split("\\.");
-                        for (String s : split) {
-                            mapperSrc.append("/").append(s);
-                        }
-                    } else {
-                        mapperSrc.append("/mybatis");
-                    }
-                }
-                String mapperPath = mybatisConfig.getProjectPath() + mapperSrc + "/";
-             /*   if (StringUtils.isNotBlank(pc.getModuleName())) {
-                    mapperPath += pc.getModuleName() + "/";
-                }*/
-                mapperPath += tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
-                return mapperPath;
-            }
-        });
-        return focList;
-    }
-
-    @org.junit.Test
-    public void test005() {
+    public  void generatorCode(MybatisConfig mybatisConfig) {
         try {
             List<String> warnings = new ArrayList<String>();
             boolean overwrite = true;
             Configuration config = new Configuration();
             final Context context = new Context(ModelType.FLAT);
+
             //配置数据源
-            this.jdbcConfig(context);
-            this.modelConfig(context);
-            this.mapperConfig(context);
-            this.xmlConfig(context);
-            this.pluginConfig(context);
+            jdbcConfig(context);
+            modelConfig(context);
+            mapperConfig(context);
+            xmlConfig(context);
+            pluginConfig(context);
 
-            context.addProperty("beginningDelimiter", "");
-            context.addProperty("endingDelimiter", "");
+            context.addProperty("beginningDelimiter", "`");
+            context.addProperty("endingDelimiter", "`");
+            context.addProperty("autoDelimitKeywords", "true");
+            context.addProperty("javaFileEncoding", "UTF-8");
 
+            final JavaTypeResolverConfiguration typeResolver = new JavaTypeResolverConfiguration();
+            //默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+            //NUMERIC 类型解析为java.math.BigDecimal
+            typeResolver.addProperty("forceBigDecimals", "false");
+            context.setJavaTypeResolverConfiguration(typeResolver);
             //PluginConfiguration
-//            commentConfig();
+           /* <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>*/
+            final CommentGeneratorConfiguration commentConfiguration = new CommentGeneratorConfiguration();
+            commentConfiguration.setConfigurationType("com.lansoft.generator.custom.MyCustomCommentGenerator");
+            commentConfiguration.addProperty("suppressDate", "false");
+            commentConfiguration.addProperty("suppressAllComments", "false");
+            commentConfiguration.addProperty("addRemarkComments", "true");
+            commentConfiguration.addProperty("author", "作者");
 
+            context.setCommentGeneratorConfiguration(commentConfiguration);
 
             final TableConfiguration configuration = new TableConfiguration(context);
-            configuration.setTableName("INTER_RES_RECEIVE_MAIN");
-            configuration.setInsertStatementEnabled(false);
-            configuration.setSelectByPrimaryKeyStatementEnabled(false);
-            configuration.setUpdateByPrimaryKeyStatementEnabled(false);
-            configuration.setDeleteByPrimaryKeyStatementEnabled(false);
+            configuration.setTableName("SPECIAL_DIC_BUSIID");
+//            configuration.setInsertStatementEnabled(false);
+//            configuration.setSelectByPrimaryKeyStatementEnabled(false);
+//            configuration.setSelectByExampleStatementEnabled(false);
+//            configuration.setUpdateByPrimaryKeyStatementEnabled(false);
+//            configuration.setDeleteByPrimaryKeyStatementEnabled(false);
+//            configuration.setDeleteByExampleStatementEnabled(false);
+//            configuration.setCountByExampleStatementEnabled(false);
+//            configuration.setUpdateByExampleStatementEnabled(false);
             context.addTableConfiguration(configuration);
 
-            context.setTargetRuntime("MyBatis3Simple");
+            PluginConfiguration pluginConfiguration = new PluginConfiguration();
+
+            //MyBatis3Simple
+            context.setTargetRuntime("tk.mybatis.mapper.generator.TkMyBatis3SimpleImpl");
             context.setId("DBTables");
             config.addContext(context);
             DefaultShellCallback callback = new DefaultShellCallback(overwrite);
@@ -237,30 +120,25 @@ public class MybatisGenerator {
         }
     }
 
-    private void commentConfig() {
-        final CommentGeneratorConfiguration commentConfiguration = new CommentGeneratorConfiguration();
-        commentConfiguration.addProperty("suppressDate","true");
-        commentConfiguration.addProperty("suppressAllComments","true");
-        //            context.setCommentGeneratorConfiguration(commentConfiguration);
-    }
-
     /**
      * 配置数据源
      *
      * @param context mybatis generator的上下文
      */
-    public void jdbcConfig(Context context) {
+    public  void jdbcConfig(Context context) {
         //配置数据源
         final JDBCConnectionConfiguration jdbcConfig = new JDBCConnectionConfiguration();
         jdbcConfig.setDriverClass("oracle.jdbc.driver.OracleDriver");
         jdbcConfig.setConnectionURL("jdbc:oracle:thin:@59.110.229.141:1521/iomdb");
         jdbcConfig.setUserId("wfadmin");
         jdbcConfig.setPassword("Oracle_123");
+        //解决mysql驱动升级到8.0后不生成指定数据库代码的问题
+        jdbcConfig.addProperty("nullCatalogMeansCurrent", "true");
         //设置oracle和mysql
         //支持oracle获取注释
-        jdbcConfig.addProperty("remarksReporting","true");
+        jdbcConfig.addProperty("remarksReporting", "true");
         //支持mysql获取注释
-        jdbcConfig.addProperty("useInformationSchema","true");
+        jdbcConfig.addProperty("useInformationSchema", "true");
         context.setJdbcConnectionConfiguration(jdbcConfig);
     }
 
@@ -269,12 +147,12 @@ public class MybatisGenerator {
      *
      * @param context mybatis generator的上下文
      */
-    public void modelConfig(Context context) {
+    public  void modelConfig(Context context) {
         final JavaModelGeneratorConfiguration configuration = new JavaModelGeneratorConfiguration();
         final String src = "D:/project/test_project/empty/src/main/java";
         configuration.setTargetProject(src);
         configuration.setTargetPackage("com.lansoft.entity4");
-        mkdirs(src);
+        FileUtil.mkdirs(src);
         context.setJavaModelGeneratorConfiguration(configuration);
     }
 
@@ -283,13 +161,13 @@ public class MybatisGenerator {
      *
      * @param context mybatis generator的上下文
      */
-    public void mapperConfig(Context context) {
+    public  void mapperConfig(Context context) {
         final JavaClientGeneratorConfiguration configuration = new JavaClientGeneratorConfiguration();
         final String src = "D:/project/test_project/empty/src/main/java";
         configuration.setTargetProject(src);
         configuration.setTargetPackage("com.lansoft.mapper4");
         configuration.setConfigurationType("XMLMAPPER");
-        mkdirs(src);
+        FileUtil.mkdirs(src);
         context.setJavaClientGeneratorConfiguration(configuration);
     }
 
@@ -298,37 +176,35 @@ public class MybatisGenerator {
      *
      * @param context mybatis generator的上下文
      */
-    public void xmlConfig(Context context) {
+    public  void xmlConfig(Context context) {
         final SqlMapGeneratorConfiguration configuration = new SqlMapGeneratorConfiguration();
         final String src = "D:/project/test_project/empty/src/main/resources";
         configuration.setTargetProject(src);
         configuration.setTargetPackage("mybatis.mapper4");
-        mkdirs(src);
+        FileUtil.mkdirs(src);
         context.setSqlMapGeneratorConfiguration(configuration);
     }
 
-    private void pluginConfig(Context context) {
+    private  void pluginConfig(Context context) {
         PluginConfiguration pluginConfiguration = new PluginConfiguration();
 
         context.addPluginConfiguration(pluginConfiguration);
 
 //        pluginConfiguration.setConfigurationType("org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin");
-        pluginConfiguration.setConfigurationType("tk.mybatis.mapper.generator.MapperPlugin");
-        pluginConfiguration.addProperty("caseSensitive","true");
-        pluginConfiguration.addProperty("lombok","Data");
-        pluginConfiguration.addProperty("generateColumnConsts","true");
-        pluginConfiguration.addProperty("mappers","tk.mybatis.mapper.common.Mapper");
+//        pluginConfiguration.setConfigurationType("tk.mybatis.mapper.generator.MapperPlugin");
+        pluginConfiguration.setConfigurationType("com.lansoft.generator.custom.MapperCustomPlugin");
+        //设置是否使用通用mapper
+        pluginConfiguration.addProperty("isTkMapper", "false");
+        //设置数据库区分大小写
+        pluginConfiguration.addProperty("caseSensitive", "true");
+//        pluginConfiguration.addProperty("useMapperCommentGenerator","true");
+//        pluginConfiguration.addProperty("lombok", "Data");
+        //创建静态长量
+//        pluginConfiguration.addProperty("generateColumnConsts","true");
+        pluginConfiguration.addProperty("mappers", "tk.mybatis.mapper.common.Mapper");
 
     }
 
-    public void mkdirs(String value){
-        File dir = new File(value);
-        if (!dir.exists()) {
-            boolean result = dir.mkdirs();
-            if (result) {
-                System.out.println(("创建目录： [" + value + "]"));
-            }
-        }
-    }
+
 
 }
