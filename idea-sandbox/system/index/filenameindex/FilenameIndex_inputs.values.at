@@ -28,3 +28,8 @@ Card.classCardChannel.classCommandAPDU.classCardTerminal.classRe
 mapper3 BoIProdDataMapper.java BoIProdDataMapper.xml GamePanel.java StartGame.java BoIProdData.java BoIProdDataMapper.java GamePanel.java BoIProdData.java BoIProdDataMapper.xml StartGame.java                   BoIScSocancelaskMapper.javaBoIScSocancelask.javaBoIScSocancelaskMapper.xml	mapper	entity	mapper
 lansoft
 mybatiscom	resourcesjavamainsrc
+entity4
+mapper4BoIScSocancelask.javaBoIScSocancelaskMapper.java)&BoIScSocancelaskDynamicSqlSupport.java                  com
+lansoft
+entity4
+mapper4InterResReceiveMain.java,)InterResReceiveMainDynamicSqlSupport.java!InterResReceiveMainMapper.java	resourcesjavamainsrc     

@@ -32,8 +32,8 @@ import java.util.Map;
  * @Date 2021/1/24  14:21
  */
 public class MybatisPlusGenerator {
-
-
+//VirtualFileManager.getInstance().syncRefresh();  刷新编译
+//String configJson = PropertiesComponent.getInstance().getValue(GEN_CONFIG);
     public static void generatorCode(MybatisConfig mybatisConfig) {
 
         // 代码生成器
@@ -119,6 +119,7 @@ public class MybatisPlusGenerator {
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
 
+        // 数据源配置
         final Map<LocalDataSource, String> dataSourceMap = getDataSourceConfig(mybatisConfig.getPsiElements());
         for (LocalDataSource dataSource : dataSourceMap.keySet()) {
             // 数据源配置
