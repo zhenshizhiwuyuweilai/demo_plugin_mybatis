@@ -1,6 +1,7 @@
 package com.lansoft.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.lansoft.dialog.MybatisGeneratorMainUI;
 import lombok.Data;
@@ -18,12 +19,15 @@ public class MybatisConfig {
      * The Table element.
      */
     @JSONField(serialize = false)
-    public final PsiElement[] psiElements;
+    public PsiElement[] psiElements;
+
+    @JSONField(serialize = false)
+    private Project project;
 
     /**
      * 选中的表名
      */
-    private final List<String> tableNameList;
+    private List<String> tableNameList;
 
     /**
      * 表名前缀
@@ -92,14 +96,20 @@ public class MybatisConfig {
 
     /**
      * 命名策略:
-     *
      */
     private boolean isUpperCamelCase;
-//    private String tableNamePrefix;
-//    private String tableNamePrefix;
-//    private String tableNamePrefix;
-//    private String tableNamePrefix;
+    /**
+     *
+     */
+    private String moduleName;
 
+    /**
+     *
+     */
+    private String pluginType;
+
+    public MybatisConfig() {
+    }
 
     public MybatisConfig(MybatisGeneratorMainUI main) {
         this.psiElements = main.getPsiElements();
@@ -118,6 +128,9 @@ public class MybatisConfig {
         this.isService = main.getIsService().isSelected();
         this.isServiceImpl = main.getIsServiceImpl().isSelected();
         this.isUpperCamelCase = main.getIsUpperCamelCase().isSelected();
+        this.moduleName = (String) ( main.getModuleName().getSelectedItem());
+        this.pluginType = (String) main.getPluginType().getSelectedItem();
+        this.project = main.getProject();
     }
 
     public PsiElement[] getPsiElements() {
@@ -182,6 +195,18 @@ public class MybatisConfig {
 
     public boolean isUpperCamelCase() {
         return isUpperCamelCase;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public String getModuleName() {
+        return moduleName;
+    }
+
+    public String getPluginType() {
+        return pluginType;
     }
 
     @Override

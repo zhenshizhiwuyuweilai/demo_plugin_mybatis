@@ -5,10 +5,13 @@
         <ActionSummary times="2" last="1612517880560" />
       </entry>
       <entry key="$Delete">
-        <ActionSummary times="15" last="1612517865788" />
+        <ActionSummary times="17" last="1622926568773" />
+      </entry>
+      <entry key="$SelectAll">
+        <ActionSummary times="1" last="1622926505556" />
       </entry>
       <entry key="About">
-        <ActionSummary times="4" last="1612083387662" />
+        <ActionSummary times="5" last="1622923533347" />
       </entry>
       <entry key="CopyAbsolutePath">
         <ActionSummary times="2" last="1612083689058" />
@@ -16,20 +19,26 @@
       <entry key="CopyReferencePopup">
         <ActionSummary times="3" last="1612083684673" />
       </entry>
+      <entry key="DatabaseView.AddActionGroupPopup">
+        <ActionSummary times="1" last="1622926497088" />
+      </entry>
+      <entry key="DatabaseView.PropertiesAction">
+        <ActionSummary times="4" last="1622926473881" />
+      </entry>
       <entry key="DatabaseView.Refresh">
-        <ActionSummary times="2" last="1612106331198" />
+        <ActionSummary times="6" last="1622925161928" />
       </entry>
       <entry key="DelegateMethods">
         <ActionSummary times="1" last="1610871735876" />
       </entry>
       <entry key="EditorBackSpace">
-        <ActionSummary times="25" last="1612517837317" />
+        <ActionSummary times="30" last="1622926608940" />
       </entry>
       <entry key="EditorCopy">
-        <ActionSummary times="6" last="1612517860153" />
+        <ActionSummary times="10" last="1622926601475" />
       </entry>
       <entry key="EditorPaste">
-        <ActionSummary times="8" last="1612517834276" />
+        <ActionSummary times="10" last="1622926618188" />
       </entry>
       <entry key="Find">
         <ActionSummary times="2" last="1612517830229" />
@@ -53,10 +62,19 @@
         <ActionSummary times="1" last="1610871666515" />
       </entry>
       <entry key="SynchronizeCurrentFile">
-        <ActionSummary times="13" last="1612518211563" />
+        <ActionSummary times="14" last="1622926642925" />
       </entry>
       <entry key="WelcomeScreen.OpenProject">
         <ActionSummary times="1" last="1610868221337" />
+      </entry>
+      <entry key="com.intellij.database.dataSource.LocalDataSourceManager$2">
+        <ActionSummary times="1" last="1622926498447" />
+      </entry>
+      <entry key="com.intellij.database.dataSource.url.ui.DynamicJdbcUrlEditor$5">
+        <ActionSummary times="1" last="1622926502291" />
+      </entry>
+      <entry key="com.intellij.database.view.ui.DatabaseConfigEditorImpl$RemoveAction">
+        <ActionSummary times="2" last="1622926482798" />
       </entry>
       <entry key="com.intellij.notification.NotificationAction$Simple">
         <ActionSummary times="1" last="1610871617229" />

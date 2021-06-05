@@ -1,41 +1,11 @@
 package com.lansoft.action;
 
-import com.alibaba.fastjson.JSON;
-import com.intellij.core.CoreModuleManager;
-import com.intellij.credentialStore.OneTimeString;
-import com.intellij.database.access.DatabaseCredentials;
-import com.intellij.database.access.DbCredentialManager;
-import com.intellij.database.autoconfig.DataSourceConfigUtil;
-import com.intellij.database.dataSource.DatabaseArtifactManager;
-import com.intellij.database.dataSource.LocalDataSource;
-import com.intellij.database.dataSource.LocalDataSourceManager;
-import com.intellij.database.model.DatabaseSystem;
-import com.intellij.database.model.RawConnectionConfig;
-import com.intellij.database.psi.*;
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.module.ModuleUtil;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.ui.DialogWrapper;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.util.Key;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiElement;
-import com.lansoft.model.TableInfo;
 import com.lansoft.dialog.MybatisGeneratorMainUI;
-import com.lansoft.service.MybatisPlusGeneratorService;
-import com.lansoft.service.impl.MybatisPlusGeneratorServiceImpl;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * 自定义功能

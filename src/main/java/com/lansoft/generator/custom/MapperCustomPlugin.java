@@ -75,7 +75,6 @@ public class MapperCustomPlugin extends FalseMethodPlugin {
      * @param introspectedTable
      * @return
      */
-    @Override
     public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         if (isTkMapper) {
             //获取实体类
