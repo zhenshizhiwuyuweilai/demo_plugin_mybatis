@@ -1,0 +1,84 @@
+{
+  "appInfo" : {
+    "build" : "202.7660.26",
+    "buildDate" : "Tue, 6 Oct 2020 16:32:04 +0800",
+    "productCode" : "IU",
+    "generated" : "Sun, 6 Jun 2021 06:17:17 +0800",
+    "os" : "Windows 10 10.0",
+    "runtime" : "JetBrains s.r.o. 11.0.8 11.0.8+10-b944.34"
+  },
+  "runtimeInfo" : {
+    "maxMemory" : 536870912,
+    "numberOfProcessors" : 12,
+    "maxNumberOfIndexingThreads" : 4,
+    "maxSizeOfFileForIntelliSense" : 2560000,
+    "maxSizeOfFileForContentLoading" : 20971520
+  },
+  "projectIndexingHistory" : {
+    "projectName" : "empty",
+    "numberOfFileProviders" : 1,
+    "totalNumberOfFiles" : 1,
+    "times" : {
+      "indexingTime" : "939 ms",
+      "scanFilesTime" : "552 ms",
+      "pushPropertiesTime" : "262 ms",
+      "indexExtensionsTime" : "< 1 ms",
+      "pushPropertiesStart" : "Sun, 6 Jun 2021 06:17:16 +0800",
+      "pushPropertiesEnd" : "Sun, 6 Jun 2021 06:17:17 +0800",
+      "scanFilesStart" : "Sun, 6 Jun 2021 06:17:17 +0800",
+      "scanFilesEnd" : "Sun, 6 Jun 2021 06:17:17 +0800",
+      "indexExtensionsStart" : "Sun, 6 Jun 2021 06:17:17 +0800",
+      "indexExtensionsEnd" : "Sun, 6 Jun 2021 06:17:17 +0800",
+      "indexingStart" : "Sun, 6 Jun 2021 06:17:16 +0800",
+      "indexingEnd" : "Sun, 6 Jun 2021 06:17:17 +0800"
+    },
+    "numberOfIndexingThreads" : 4,
+    "totalStatsPerFileType" : [ {
+      "fileType" : "SQL",
+      "partOfTotalIndexingTime" : "100.0%",
+      "partOfTotalContentLoadingTime" : "100.0%",
+      "totalNumberOfFiles" : 1,
+      "totalFilesSize" : "0 B",
+      "indexingSpeed" : "0 B/s",
+      "biggestContributors" : [ {
+        "providerName" : "com.intellij.ide.scratch.ScratchFileServiceImpl$IndexSetContributor@18a5e962",
+        "numberOfFiles" : 1,
+        "totalFilesSize" : "0 B",
+        "partOfTotalIndexingTimeOfThisFileType" : "100.0%"
+      } ]
+    } ],
+    "totalStatsPerIndexer" : [ {
+      "indexId" : "Trigram.Index",
+      "partOfTotalIndexingTime" : "50.0%",
+      "totalNumberOfFiles" : 1,
+      "totalFilesSize" : "0 B",
+      "indexingSpeed" : "0 B/s"
+    }, {
+      "indexId" : "Stubs",
+      "partOfTotalIndexingTime" : "50.0%",
+      "totalNumberOfFiles" : 1,
+      "totalFilesSize" : "0 B",
+      "indexingSpeed" : "0 B/s"
+    } ],
+    "fileProviderStatistics" : [ {
+      "providerName" : "com.intellij.ide.scratch.ScratchFileServiceImpl$IndexSetContributor@18a5e962",
+      "totalNumberOfFiles" : 1,
+      "totalIndexingTime" : "94 ms",
+      "statsPerFileType" : [ {
+        "fileType" : "SQL",
+        "numberOfFiles" : 1,
+        "totalFilesSize" : "0 B",
+        "partOfTotalIndexingTime" : "100.0%",
+        "partOfTotalContentLoadingTime" : "100.0%"
+      } ],
+      "statsPerIndexer" : [ {
+        "indexId" : "Trigram.Index",
+        "partOfTotalIndexingTime" : "50.0%"
+      }, {
+        "indexId" : "Stubs",
+        "partOfTotalIndexingTime" : "50.0%"
+      } ],
+      "fastIndexers" : [ ]
+    } ]
+  }
+}

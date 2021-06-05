@@ -5,7 +5,7 @@
         <ActionSummary times="2" last="1612517880560" />
       </entry>
       <entry key="$Delete">
-        <ActionSummary times="17" last="1622926568773" />
+        <ActionSummary times="19" last="1622931975497" />
       </entry>
       <entry key="$SelectAll">
         <ActionSummary times="1" last="1622926505556" />
@@ -26,13 +26,13 @@
         <ActionSummary times="4" last="1622926473881" />
       </entry>
       <entry key="DatabaseView.Refresh">
-        <ActionSummary times="6" last="1622925161928" />
+        <ActionSummary times="8" last="1622931615208" />
       </entry>
       <entry key="DelegateMethods">
         <ActionSummary times="1" last="1610871735876" />
       </entry>
       <entry key="EditorBackSpace">
-        <ActionSummary times="30" last="1622926608940" />
+        <ActionSummary times="31" last="1622931946434" />
       </entry>
       <entry key="EditorCopy">
         <ActionSummary times="10" last="1622926601475" />
@@ -62,7 +62,7 @@
         <ActionSummary times="1" last="1610871666515" />
       </entry>
       <entry key="SynchronizeCurrentFile">
-        <ActionSummary times="14" last="1622926642925" />
+        <ActionSummary times="15" last="1622931705562" />
       </entry>
       <entry key="WelcomeScreen.OpenProject">
         <ActionSummary times="1" last="1610868221337" />
@@ -78,6 +78,9 @@
       </entry>
       <entry key="com.intellij.notification.NotificationAction$Simple">
         <ActionSummary times="1" last="1610871617229" />
+      </entry>
+      <entry key="com.intellij.openapi.fileEditor.impl.tabActions.CloseTab">
+        <ActionSummary times="1" last="1622931973242" />
       </entry>
       <entry key="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
         <ActionSummary times="2" last="1610884097825" />

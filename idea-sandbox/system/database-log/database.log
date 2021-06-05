@@ -4904,3 +4904,870 @@ from ( select * from X1
 -- 2021-06-06 04:56:07 [empty] [ali-iom] [introspection] [session id: 1461958791] [statement id: 546311736] results received
 -- 2021-06-06 04:56:07 [empty] [ali-iom] [introspection] [session id: 1461958791] [statement id: 546311736] finished - execution time: 132 ms, fetching time: 3 ms, total result sets count: 1
 -- 2021-06-06 04:56:07 [empty] [ali-iom] [session id: 1461958791] disconnected
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [session id: 290555406] connected
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255184] 
+select sys_context('userenv', 'current_schema') x from dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255184] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255184] finished - execution time: 62 ms, fetching time: 23 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255185] 
+select 'C' as permission
+from sys.session_roles
+where role = 'SELECT_CATALOG_ROLE'
+union
+select 'D' as permission
+from sys.session_privs
+where privilege = 'SELECT ANY DICTIONARY'
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255185] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255185] finished - execution time: 19 ms, fetching time: 17 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255186] 
+with V1 as (select 0 from sys.obj$ where 1 is null),
+     V2 as (select 0 from sys.type$ where 1 is null),
+     V3 as (select 0 from sys.ind$ where 1 is null),
+     V4 as (select 0 from sys.ts$ where 1 is null),
+     V5 as (select 0 from sys.con$ where 1 is null),
+     V6 as (select 0 from sys.cdef$ where 1 is null),
+     V7 as (select 0 from sys.dependency$ where 1 is null)
+select 1
+from dual
+where not exists (select 1 from V1)
+  and not exists (select 1 from V2)
+  and not exists (select 1 from V3)
+  and not exists (select 1 from V4)
+  and not exists (select 1 from V5)
+  and not exists (select 1 from V6)
+  and not exists (select 1 from V7)
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255186] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255186] finished - execution time: 15 ms, fetching time: 4 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255187] 
+select sys_context('userenv', 'current_schema') as current_schema,
+       user as current_user,
+       sys_context('userenv','db_name') as database_name
+from sys.dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255187] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255187] finished - execution time: 14 ms, fetching time: 8 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255188] 
+select id, name
+from ( select user_id as id, username as name from sys.all_users
+       union all
+       select 1 as id, 'PUBLIC' as name from sys.dual )
+order by decode(name, user, 1, 'PUBLIC', 2, sys_context('userenv', 'current_schema'), 3, 4), id
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255188] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255188] finished - execution time: 18 ms, fetching time: 8 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255189] 
+select /*+all_rows*/ obj#
+from sys.obj$
+where /* owner# = :schema_id */owner# in ( ? ) 
+  and type# between 1 and 42
+  and type# not between 19 and 41
+  and type# != 10 -- NON-EXISTENT
+  and name not like 'BIN$%'
+  and name not like 'SYS_IL%$$'
+  and linkname is null
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255189] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255189] finished - execution time: 21 ms, fetching time: 16 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255190] 
+select substr(decode(type#, 2,'TA', 3,'CL', 4,'VI', 6,'SE', 7,'PR', 8,'FU', 9,'PA', 42,'MA', 'ZZ') ||
+              to_char(owner#, 'FM0000000000') || to_char(obj#, 'FM0000000000') ||
+              decode(bitand(flags, 16), 16, 'Y', 'N') || -- is secondary
+              name, 1, 160 /* 60 */) as item
+from sys.obj$
+where owner# in ( ? )
+  and type# in (2,3,4,6,7,8,9,42)
+  and name not like 'BIN$%'
+  and name not like 'SYS_IL%$$'
+  and subname is null
+  and mtime >= ?
+union all
+select decode(T.typecode, 108,'YB', 'YC') ||
+       to_char(O.owner#, 'FM0000000000') || to_char(O.obj#, 'FM0000000000') ||
+       'N' || -- is secondary
+       O.name as item
+from sys.type$ T,
+     sys.obj$ O
+where O.owner# in ( ? )
+  and T.tvoid = O.oid$
+  and T.typecode in (108,122)
+  and T.package_obj# is null
+  and O.mtime >= ?
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255190] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255190] finished - execution time: 44 ms, fetching time: 5 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255191] 
+select O.owner as synonym_schema_name,
+       O.object_id as synonym_id,
+       S.synonym_name,
+       O.created as created_timestamp,
+       O.last_ddl_time as modified_timestamp,
+       S.db_link as origin_db_link,
+       S.table_owner as origin_schema_name,
+       S.table_name as origin_object_name
+from sys.DBA_objects O,
+     sys.DBA_synonyms S
+where O.object_type = 'SYNONYM'
+  and O.owner in ( ? )
+  and O.object_name not like '%/%'
+  and O.last_ddl_time >= ?
+  and S.owner = O.owner
+  and S.synonym_name = O.object_name
+order by object_id
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255191] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255191] finished - execution time: 22 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255192] 
+select sysdate from dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255192] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255192] finished - execution time: 14 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255193] 
+with U as ( select nvl(max(user_id), -1) as user_id
+            from sys.DBA_users
+            where username = ? ),
+     O as ( select min(created) as created_timestamp,
+                   max(last_ddl_time) as modified_timestamp
+            from sys.DBA_objects
+            where owner = ? )
+select *
+from U, O
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255193] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255193] finished - execution time: 27 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255194] 
+with L as ( select db_link||'|'||username||'|'||host||'|'||created as S
+            from sys.DBA_db_links
+            where owner = ? )
+select sum(dbms_utility.get_hash_value(S, 1, 1073741824))
+from L
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255194] results received
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255194] finished - execution time: 19 ms, fetching time: 9 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:41 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255195] 
+with OI as ( select object_name as table_name, object_id
+             from sys.DBA_objects
+             where owner = ?
+               and object_type in ('TABLE', 'MATERIALIZED VIEW', 'VIEW') ),
+     X1 as ( select sum(object_id * 1007 +
+                        dbms_utility.get_hash_value(comments, 1, 1073741824)) as X
+             from sys.DBA_tab_comments natural join OI
+             where owner = ?
+               and table_name not like 'BIN$%'
+               and comments is not null ),
+     X2 as ( select sum(object_id * 10007 +
+                        dbms_utility.get_hash_value(column_name,1,1073741824) * 101 +
+                        dbms_utility.get_hash_value(comments,1,1073741824)) as X
+             from sys.DBA_col_comments natural join OI
+             where owner = ?
+               and table_name not like 'BIN$%'
+               and comments is not null )
+select sum(X) as Hash
+from ( select * from X1
+       union all
+       select * from X2 )
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:42 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255195] results received
+-- 2021-06-06 05:43:42 [empty] [ali-iom] [introspection] [session id: 290555406] [statement id: 180255195] finished - execution time: 136 ms, fetching time: 2 ms, total result sets count: 1
+-- 2021-06-06 05:43:42 [empty] [ali-iom] [session id: 290555406] disconnected
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [session id: 290555407] connected
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255196] 
+select sys_context('userenv', 'current_schema') x from dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255196] results received
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255196] finished - execution time: 42 ms, fetching time: 8 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255197] 
+select sys_context('userenv', 'current_schema') as current_schema,
+       user as current_user,
+       sys_context('userenv','db_name') as database_name
+from sys.dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255197] results received
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255197] finished - execution time: 17 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255198] 
+select id, name
+from ( select user_id as id, username as name from sys.all_users
+       union all
+       select 1 as id, 'PUBLIC' as name from sys.dual )
+order by decode(name, user, 1, 'PUBLIC', 2, sys_context('userenv', 'current_schema'), 3, 4), id
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255198] results received
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255198] finished - execution time: 35 ms, fetching time: 5 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255199] 
+select /*+all_rows*/ obj#
+from sys.obj$
+where /* owner# = :schema_id */owner# in ( ? ) 
+  and type# between 1 and 42
+  and type# not between 19 and 41
+  and type# != 10 -- NON-EXISTENT
+  and name not like 'BIN$%'
+  and name not like 'SYS_IL%$$'
+  and linkname is null
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255199] results received
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255199] finished - execution time: 16 ms, fetching time: 13 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255200] 
+select substr(decode(type#, 2,'TA', 3,'CL', 4,'VI', 6,'SE', 7,'PR', 8,'FU', 9,'PA', 42,'MA', 'ZZ') ||
+              to_char(owner#, 'FM0000000000') || to_char(obj#, 'FM0000000000') ||
+              decode(bitand(flags, 16), 16, 'Y', 'N') || -- is secondary
+              name, 1, 160 /* 60 */) as item
+from sys.obj$
+where owner# in ( ? )
+  and type# in (2,3,4,6,7,8,9,42)
+  and name not like 'BIN$%'
+  and name not like 'SYS_IL%$$'
+  and subname is null
+  and mtime >= ?
+union all
+select decode(T.typecode, 108,'YB', 'YC') ||
+       to_char(O.owner#, 'FM0000000000') || to_char(O.obj#, 'FM0000000000') ||
+       'N' || -- is secondary
+       O.name as item
+from sys.type$ T,
+     sys.obj$ O
+where O.owner# in ( ? )
+  and T.tvoid = O.oid$
+  and T.typecode in (108,122)
+  and T.package_obj# is null
+  and O.mtime >= ?
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255200] results received
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255200] finished - execution time: 19 ms, fetching time: 2 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255201] 
+select O.owner as synonym_schema_name,
+       O.object_id as synonym_id,
+       S.synonym_name,
+       O.created as created_timestamp,
+       O.last_ddl_time as modified_timestamp,
+       S.db_link as origin_db_link,
+       S.table_owner as origin_schema_name,
+       S.table_name as origin_object_name
+from sys.DBA_objects O,
+     sys.DBA_synonyms S
+where O.object_type = 'SYNONYM'
+  and O.owner in ( ? )
+  and O.object_name not like '%/%'
+  and O.last_ddl_time >= ?
+  and S.owner = O.owner
+  and S.synonym_name = O.object_name
+order by object_id
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255201] results received
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255201] finished - execution time: 21 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255202] 
+select sysdate from dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255202] results received
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255202] finished - execution time: 37 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255203] 
+with U as ( select nvl(max(user_id), -1) as user_id
+            from sys.DBA_users
+            where username = ? ),
+     O as ( select min(created) as created_timestamp,
+                   max(last_ddl_time) as modified_timestamp
+            from sys.DBA_objects
+            where owner = ? )
+select *
+from U, O
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255203] results received
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255203] finished - execution time: 25 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255204] 
+with L as ( select db_link||'|'||username||'|'||host||'|'||created as S
+            from sys.DBA_db_links
+            where owner = ? )
+select sum(dbms_utility.get_hash_value(S, 1, 1073741824))
+from L
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255204] results received
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255204] finished - execution time: 16 ms, fetching time: 2 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:43:48 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255205] 
+with OI as ( select object_name as table_name, object_id
+             from sys.DBA_objects
+             where owner = ?
+               and object_type in ('TABLE', 'MATERIALIZED VIEW', 'VIEW') ),
+     X1 as ( select sum(object_id * 1007 +
+                        dbms_utility.get_hash_value(comments, 1, 1073741824)) as X
+             from sys.DBA_tab_comments natural join OI
+             where owner = ?
+               and table_name not like 'BIN$%'
+               and comments is not null ),
+     X2 as ( select sum(object_id * 10007 +
+                        dbms_utility.get_hash_value(column_name,1,1073741824) * 101 +
+                        dbms_utility.get_hash_value(comments,1,1073741824)) as X
+             from sys.DBA_col_comments natural join OI
+             where owner = ?
+               and table_name not like 'BIN$%'
+               and comments is not null )
+select sum(X) as Hash
+from ( select * from X1
+       union all
+       select * from X2 )
+-- ] --------------------------------------------------
+-- 2021-06-06 05:43:49 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255205] results received
+-- 2021-06-06 05:43:49 [empty] [ali-iom] [introspection] [session id: 290555407] [statement id: 180255205] finished - execution time: 158 ms, fetching time: 3 ms, total result sets count: 1
+-- 2021-06-06 05:43:49 [empty] [ali-iom] [session id: 290555407] disconnected
+-- 2021-06-06 05:47:59 [empty] [ali-iom] [session id: 14890470] connected
+-- [ --------------------------------------------------
+-- 2021-06-06 05:47:59 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442487] 
+select sys_context('userenv', 'current_schema') x from dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:47:59 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442487] results received
+-- 2021-06-06 05:47:59 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442487] finished - execution time: 66 ms, fetching time: 24 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:47:59 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442488] 
+select 'C' as permission
+from sys.session_roles
+where role = 'SELECT_CATALOG_ROLE'
+union
+select 'D' as permission
+from sys.session_privs
+where privilege = 'SELECT ANY DICTIONARY'
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442488] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442488] finished - execution time: 51 ms, fetching time: 18 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442489] 
+with V1 as (select 0 from sys.obj$ where 1 is null),
+     V2 as (select 0 from sys.type$ where 1 is null),
+     V3 as (select 0 from sys.ind$ where 1 is null),
+     V4 as (select 0 from sys.ts$ where 1 is null),
+     V5 as (select 0 from sys.con$ where 1 is null),
+     V6 as (select 0 from sys.cdef$ where 1 is null),
+     V7 as (select 0 from sys.dependency$ where 1 is null)
+select 1
+from dual
+where not exists (select 1 from V1)
+  and not exists (select 1 from V2)
+  and not exists (select 1 from V3)
+  and not exists (select 1 from V4)
+  and not exists (select 1 from V5)
+  and not exists (select 1 from V6)
+  and not exists (select 1 from V7)
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442489] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442489] finished - execution time: 15 ms, fetching time: 4 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442490] 
+select sys_context('userenv', 'current_schema') as current_schema,
+       user as current_user,
+       sys_context('userenv','db_name') as database_name
+from sys.dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442490] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442490] finished - execution time: 27 ms, fetching time: 8 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442491] 
+select id, name
+from ( select user_id as id, username as name from sys.all_users
+       union all
+       select 1 as id, 'PUBLIC' as name from sys.dual )
+order by decode(name, user, 1, 'PUBLIC', 2, sys_context('userenv', 'current_schema'), 3, 4), id
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442491] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442491] finished - execution time: 13 ms, fetching time: 8 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442492] 
+select /*+all_rows*/ obj#
+from sys.obj$
+where /* owner# = :schema_id */owner# in ( ? ) 
+  and type# between 1 and 42
+  and type# not between 19 and 41
+  and type# != 10 -- NON-EXISTENT
+  and name not like 'BIN$%'
+  and name not like 'SYS_IL%$$'
+  and linkname is null
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442492] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442492] finished - execution time: 21 ms, fetching time: 17 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442493] 
+select substr(decode(type#, 2,'TA', 3,'CL', 4,'VI', 6,'SE', 7,'PR', 8,'FU', 9,'PA', 42,'MA', 'ZZ') ||
+              to_char(owner#, 'FM0000000000') || to_char(obj#, 'FM0000000000') ||
+              decode(bitand(flags, 16), 16, 'Y', 'N') || -- is secondary
+              name, 1, 160 /* 60 */) as item
+from sys.obj$
+where owner# in ( ? )
+  and type# in (2,3,4,6,7,8,9,42)
+  and name not like 'BIN$%'
+  and name not like 'SYS_IL%$$'
+  and subname is null
+  and mtime >= ?
+union all
+select decode(T.typecode, 108,'YB', 'YC') ||
+       to_char(O.owner#, 'FM0000000000') || to_char(O.obj#, 'FM0000000000') ||
+       'N' || -- is secondary
+       O.name as item
+from sys.type$ T,
+     sys.obj$ O
+where O.owner# in ( ? )
+  and T.tvoid = O.oid$
+  and T.typecode in (108,122)
+  and T.package_obj# is null
+  and O.mtime >= ?
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442493] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442493] finished - execution time: 16 ms, fetching time: 5 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442494] 
+select O.owner as synonym_schema_name,
+       O.object_id as synonym_id,
+       S.synonym_name,
+       O.created as created_timestamp,
+       O.last_ddl_time as modified_timestamp,
+       S.db_link as origin_db_link,
+       S.table_owner as origin_schema_name,
+       S.table_name as origin_object_name
+from sys.DBA_objects O,
+     sys.DBA_synonyms S
+where O.object_type = 'SYNONYM'
+  and O.owner in ( ? )
+  and O.object_name not like '%/%'
+  and O.last_ddl_time >= ?
+  and S.owner = O.owner
+  and S.synonym_name = O.object_name
+order by object_id
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442494] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442494] finished - execution time: 23 ms, fetching time: 4 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442495] 
+select sysdate from dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442495] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442495] finished - execution time: 23 ms, fetching time: 4 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442496] 
+with U as ( select nvl(max(user_id), -1) as user_id
+            from sys.DBA_users
+            where username = ? ),
+     O as ( select min(created) as created_timestamp,
+                   max(last_ddl_time) as modified_timestamp
+            from sys.DBA_objects
+            where owner = ? )
+select *
+from U, O
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442496] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442496] finished - execution time: 38 ms, fetching time: 5 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442497] 
+with L as ( select db_link||'|'||username||'|'||host||'|'||created as S
+            from sys.DBA_db_links
+            where owner = ? )
+select sum(dbms_utility.get_hash_value(S, 1, 1073741824))
+from L
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442497] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442497] finished - execution time: 11 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442498] 
+with OI as ( select object_name as table_name, object_id
+             from sys.DBA_objects
+             where owner = ?
+               and object_type in ('TABLE', 'MATERIALIZED VIEW', 'VIEW') ),
+     X1 as ( select sum(object_id * 1007 +
+                        dbms_utility.get_hash_value(comments, 1, 1073741824)) as X
+             from sys.DBA_tab_comments natural join OI
+             where owner = ?
+               and table_name not like 'BIN$%'
+               and comments is not null ),
+     X2 as ( select sum(object_id * 10007 +
+                        dbms_utility.get_hash_value(column_name,1,1073741824) * 101 +
+                        dbms_utility.get_hash_value(comments,1,1073741824)) as X
+             from sys.DBA_col_comments natural join OI
+             where owner = ?
+               and table_name not like 'BIN$%'
+               and comments is not null )
+select sum(X) as Hash
+from ( select * from X1
+       union all
+       select * from X2 )
+-- ] --------------------------------------------------
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442498] results received
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [introspection] [session id: 14890470] [statement id: 96442498] finished - execution time: 134 ms, fetching time: 8 ms, total result sets count: 1
+-- 2021-06-06 05:48:00 [empty] [ali-iom] [session id: 14890470] disconnected
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [session id: 543680482] connected
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811685] 
+select sys_context('userenv', 'current_schema') x from dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811685] results received
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811685] finished - execution time: 63 ms, fetching time: 25 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811686] 
+select 'C' as permission
+from sys.session_roles
+where role = 'SELECT_CATALOG_ROLE'
+union
+select 'D' as permission
+from sys.session_privs
+where privilege = 'SELECT ANY DICTIONARY'
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811686] results received
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811686] finished - execution time: 15 ms, fetching time: 16 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811687] 
+with V1 as (select 0 from sys.obj$ where 1 is null),
+     V2 as (select 0 from sys.type$ where 1 is null),
+     V3 as (select 0 from sys.ind$ where 1 is null),
+     V4 as (select 0 from sys.ts$ where 1 is null),
+     V5 as (select 0 from sys.con$ where 1 is null),
+     V6 as (select 0 from sys.cdef$ where 1 is null),
+     V7 as (select 0 from sys.dependency$ where 1 is null)
+select 1
+from dual
+where not exists (select 1 from V1)
+  and not exists (select 1 from V2)
+  and not exists (select 1 from V3)
+  and not exists (select 1 from V4)
+  and not exists (select 1 from V5)
+  and not exists (select 1 from V6)
+  and not exists (select 1 from V7)
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811687] results received
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811687] finished - execution time: 35 ms, fetching time: 10 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811688] 
+select sys_context('userenv', 'current_schema') as current_schema,
+       user as current_user,
+       sys_context('userenv','db_name') as database_name
+from sys.dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811688] results received
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811688] finished - execution time: 17 ms, fetching time: 8 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811689] 
+select id, name
+from ( select user_id as id, username as name from sys.all_users
+       union all
+       select 1 as id, 'PUBLIC' as name from sys.dual )
+order by decode(name, user, 1, 'PUBLIC', 2, sys_context('userenv', 'current_schema'), 3, 4), id
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811689] results received
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811689] finished - execution time: 19 ms, fetching time: 13 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811690] 
+select /*+all_rows*/ obj#
+from sys.obj$
+where /* owner# = :schema_id */owner# in ( ? ) 
+  and type# between 1 and 42
+  and type# not between 19 and 41
+  and type# != 10 -- NON-EXISTENT
+  and name not like 'BIN$%'
+  and name not like 'SYS_IL%$$'
+  and linkname is null
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811690] results received
+-- 2021-06-06 05:56:37 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811690] finished - execution time: 23 ms, fetching time: 16 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811691] 
+select substr(decode(type#, 2,'TA', 3,'CL', 4,'VI', 6,'SE', 7,'PR', 8,'FU', 9,'PA', 42,'MA', 'ZZ') ||
+              to_char(owner#, 'FM0000000000') || to_char(obj#, 'FM0000000000') ||
+              decode(bitand(flags, 16), 16, 'Y', 'N') || -- is secondary
+              name, 1, 160 /* 60 */) as item
+from sys.obj$
+where owner# in ( ? )
+  and type# in (2,3,4,6,7,8,9,42)
+  and name not like 'BIN$%'
+  and name not like 'SYS_IL%$$'
+  and subname is null
+  and mtime >= ?
+union all
+select decode(T.typecode, 108,'YB', 'YC') ||
+       to_char(O.owner#, 'FM0000000000') || to_char(O.obj#, 'FM0000000000') ||
+       'N' || -- is secondary
+       O.name as item
+from sys.type$ T,
+     sys.obj$ O
+where O.owner# in ( ? )
+  and T.tvoid = O.oid$
+  and T.typecode in (108,122)
+  and T.package_obj# is null
+  and O.mtime >= ?
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811691] results received
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811691] finished - execution time: 20 ms, fetching time: 4 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811692] 
+select O.owner as synonym_schema_name,
+       O.object_id as synonym_id,
+       S.synonym_name,
+       O.created as created_timestamp,
+       O.last_ddl_time as modified_timestamp,
+       S.db_link as origin_db_link,
+       S.table_owner as origin_schema_name,
+       S.table_name as origin_object_name
+from sys.DBA_objects O,
+     sys.DBA_synonyms S
+where O.object_type = 'SYNONYM'
+  and O.owner in ( ? )
+  and O.object_name not like '%/%'
+  and O.last_ddl_time >= ?
+  and S.owner = O.owner
+  and S.synonym_name = O.object_name
+order by object_id
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811692] results received
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811692] finished - execution time: 19 ms, fetching time: 2 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811693] 
+select sysdate from dual
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811693] results received
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811693] finished - execution time: 15 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811694] 
+with U as ( select nvl(max(user_id), -1) as user_id
+            from sys.DBA_users
+            where username = ? ),
+     O as ( select min(created) as created_timestamp,
+                   max(last_ddl_time) as modified_timestamp
+            from sys.DBA_objects
+            where owner = ? )
+select *
+from U, O
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811694] results received
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811694] finished - execution time: 26 ms, fetching time: 4 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811695] 
+with L as ( select db_link||'|'||username||'|'||host||'|'||created as S
+            from sys.DBA_db_links
+            where owner = ? )
+select sum(dbms_utility.get_hash_value(S, 1, 1073741824))
+from L
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811695] results received
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811695] finished - execution time: 11 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811696] 
+with OI as ( select object_name as table_name, object_id
+             from sys.DBA_objects
+             where owner = ?
+               and object_type in ('TABLE', 'MATERIALIZED VIEW', 'VIEW') ),
+     X1 as ( select sum(object_id * 1007 +
+                        dbms_utility.get_hash_value(comments, 1, 1073741824)) as X
+             from sys.DBA_tab_comments natural join OI
+             where owner = ?
+               and table_name not like 'BIN$%'
+               and comments is not null ),
+     X2 as ( select sum(object_id * 10007 +
+                        dbms_utility.get_hash_value(column_name,1,1073741824) * 101 +
+                        dbms_utility.get_hash_value(comments,1,1073741824)) as X
+             from sys.DBA_col_comments natural join OI
+             where owner = ?
+               and table_name not like 'BIN$%'
+               and comments is not null )
+select sum(X) as Hash
+from ( select * from X1
+       union all
+       select * from X2 )
+-- ] --------------------------------------------------
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811696] results received
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [introspection] [session id: 543680482] [statement id: 1428811696] finished - execution time: 153 ms, fetching time: 3 ms, total result sets count: 1
+-- 2021-06-06 05:56:38 [empty] [ali-iom] [session id: 543680482] disconnected
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [session id: 307429057] connected
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405010] 
+select sys_context('userenv', 'current_schema') x from dual
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405010] results received
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405010] finished - execution time: 66 ms, fetching time: 24 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405011] 
+select 'C' as permission
+from sys.session_roles
+where role = 'SELECT_CATALOG_ROLE'
+union
+select 'D' as permission
+from sys.session_privs
+where privilege = 'SELECT ANY DICTIONARY'
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405011] results received
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405011] finished - execution time: 16 ms, fetching time: 18 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405012] 
+with V1 as (select 0 from sys.obj$ where 1 is null),
+     V2 as (select 0 from sys.type$ where 1 is null),
+     V3 as (select 0 from sys.ind$ where 1 is null),
+     V4 as (select 0 from sys.ts$ where 1 is null),
+     V5 as (select 0 from sys.con$ where 1 is null),
+     V6 as (select 0 from sys.cdef$ where 1 is null),
+     V7 as (select 0 from sys.dependency$ where 1 is null)
+select 1
+from dual
+where not exists (select 1 from V1)
+  and not exists (select 1 from V2)
+  and not exists (select 1 from V3)
+  and not exists (select 1 from V4)
+  and not exists (select 1 from V5)
+  and not exists (select 1 from V6)
+  and not exists (select 1 from V7)
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405012] results received
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405012] finished - execution time: 19 ms, fetching time: 5 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405013] 
+select sys_context('userenv', 'current_schema') as current_schema,
+       user as current_user,
+       sys_context('userenv','db_name') as database_name
+from sys.dual
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405013] results received
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405013] finished - execution time: 14 ms, fetching time: 8 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405014] 
+select id, name
+from ( select user_id as id, username as name from sys.all_users
+       union all
+       select 1 as id, 'PUBLIC' as name from sys.dual )
+order by decode(name, user, 1, 'PUBLIC', 2, sys_context('userenv', 'current_schema'), 3, 4), id
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405014] results received
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405014] finished - execution time: 14 ms, fetching time: 7 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405015] 
+select /*+all_rows*/ obj#
+from sys.obj$
+where /* owner# = :schema_id */owner# in ( ? ) 
+  and type# between 1 and 42
+  and type# not between 19 and 41
+  and type# != 10 -- NON-EXISTENT
+  and name not like 'BIN$%'
+  and name not like 'SYS_IL%$$'
+  and linkname is null
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405015] results received
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405015] finished - execution time: 20 ms, fetching time: 22 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405016] 
+select substr(decode(type#, 2,'TA', 3,'CL', 4,'VI', 6,'SE', 7,'PR', 8,'FU', 9,'PA', 42,'MA', 'ZZ') ||
+              to_char(owner#, 'FM0000000000') || to_char(obj#, 'FM0000000000') ||
+              decode(bitand(flags, 16), 16, 'Y', 'N') || -- is secondary
+              name, 1, 160 /* 60 */) as item
+from sys.obj$
+where owner# in ( ? )
+  and type# in (2,3,4,6,7,8,9,42)
+  and name not like 'BIN$%'
+  and name not like 'SYS_IL%$$'
+  and subname is null
+  and mtime >= ?
+union all
+select decode(T.typecode, 108,'YB', 'YC') ||
+       to_char(O.owner#, 'FM0000000000') || to_char(O.obj#, 'FM0000000000') ||
+       'N' || -- is secondary
+       O.name as item
+from sys.type$ T,
+     sys.obj$ O
+where O.owner# in ( ? )
+  and T.tvoid = O.oid$
+  and T.typecode in (108,122)
+  and T.package_obj# is null
+  and O.mtime >= ?
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405016] results received
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405016] finished - execution time: 16 ms, fetching time: 5 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405017] 
+select O.owner as synonym_schema_name,
+       O.object_id as synonym_id,
+       S.synonym_name,
+       O.created as created_timestamp,
+       O.last_ddl_time as modified_timestamp,
+       S.db_link as origin_db_link,
+       S.table_owner as origin_schema_name,
+       S.table_name as origin_object_name
+from sys.DBA_objects O,
+     sys.DBA_synonyms S
+where O.object_type = 'SYNONYM'
+  and O.owner in ( ? )
+  and O.object_name not like '%/%'
+  and O.last_ddl_time >= ?
+  and S.owner = O.owner
+  and S.synonym_name = O.object_name
+order by object_id
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405017] results received
+-- 2021-06-06 06:20:26 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405017] finished - execution time: 20 ms, fetching time: 4 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405018] 
+select sysdate from dual
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405018] results received
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405018] finished - execution time: 18 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405019] 
+with U as ( select nvl(max(user_id), -1) as user_id
+            from sys.DBA_users
+            where username = ? ),
+     O as ( select min(created) as created_timestamp,
+                   max(last_ddl_time) as modified_timestamp
+            from sys.DBA_objects
+            where owner = ? )
+select *
+from U, O
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405019] results received
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405019] finished - execution time: 36 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405020] 
+with L as ( select db_link||'|'||username||'|'||host||'|'||created as S
+            from sys.DBA_db_links
+            where owner = ? )
+select sum(dbms_utility.get_hash_value(S, 1, 1073741824))
+from L
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405020] results received
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405020] finished - execution time: 21 ms, fetching time: 3 ms, total result sets count: 1
+-- [ --------------------------------------------------
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405021] 
+with OI as ( select object_name as table_name, object_id
+             from sys.DBA_objects
+             where owner = ?
+               and object_type in ('TABLE', 'MATERIALIZED VIEW', 'VIEW') ),
+     X1 as ( select sum(object_id * 1007 +
+                        dbms_utility.get_hash_value(comments, 1, 1073741824)) as X
+             from sys.DBA_tab_comments natural join OI
+             where owner = ?
+               and table_name not like 'BIN$%'
+               and comments is not null ),
+     X2 as ( select sum(object_id * 10007 +
+                        dbms_utility.get_hash_value(column_name,1,1073741824) * 101 +
+                        dbms_utility.get_hash_value(comments,1,1073741824)) as X
+             from sys.DBA_col_comments natural join OI
+             where owner = ?
+               and table_name not like 'BIN$%'
+               and comments is not null )
+select sum(X) as Hash
+from ( select * from X1
+       union all
+       select * from X2 )
+-- ] --------------------------------------------------
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405021] results received
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [introspection] [session id: 307429057] [statement id: 633405021] finished - execution time: 126 ms, fetching time: 4 ms, total result sets count: 1
+-- 2021-06-06 06:20:27 [empty] [ali-iom] [session id: 307429057] disconnected

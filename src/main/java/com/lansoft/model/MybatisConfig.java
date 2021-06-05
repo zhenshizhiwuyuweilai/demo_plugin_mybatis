@@ -14,6 +14,7 @@ import java.util.List;
  * @Author 郭伟东
  * @Date 2021/1/25  14:03
  */
+@Data
 public class MybatisConfig {
     /**
      * The Table element.
@@ -207,6 +208,82 @@ public class MybatisConfig {
 
     public String getPluginType() {
         return pluginType;
+    }
+
+    public void setPsiElements(PsiElement[] psiElements) {
+        this.psiElements = psiElements;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public void setTableNameList(List<String> tableNameList) {
+        this.tableNameList = tableNameList;
+    }
+
+    public void setTableNamePrefix(String tableNamePrefix) {
+        this.tableNamePrefix = tableNamePrefix;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setProjectPath(String projectPath) {
+        this.projectPath = projectPath;
+    }
+
+    public void setModelPackage(String modelPackage) {
+        this.modelPackage = modelPackage;
+    }
+
+    public void setModelFolder(String modelFolder) {
+        this.modelFolder = modelFolder;
+    }
+
+    public void setMapperPackage(String mapperPackage) {
+        this.mapperPackage = mapperPackage;
+    }
+
+    public void setMapperFolder(String mapperFolder) {
+        this.mapperFolder = mapperFolder;
+    }
+
+    public void setXmlPackage(String xmlPackage) {
+        this.xmlPackage = xmlPackage;
+    }
+
+    public void setXmlFolder(String xmlFolder) {
+        this.xmlFolder = xmlFolder;
+    }
+
+    public void setLombok(boolean lombok) {
+        isLombok = lombok;
+    }
+
+    public void setRestController(boolean restController) {
+        isRestController = restController;
+    }
+
+    public void setService(boolean service) {
+        isService = service;
+    }
+
+    public void setServiceImpl(boolean serviceImpl) {
+        isServiceImpl = serviceImpl;
+    }
+
+    public void setUpperCamelCase(boolean upperCamelCase) {
+        isUpperCamelCase = upperCamelCase;
+    }
+
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
+
+    public void setPluginType(String pluginType) {
+        this.pluginType = pluginType;
     }
 
     @Override

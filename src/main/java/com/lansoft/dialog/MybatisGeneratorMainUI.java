@@ -9,7 +9,6 @@ import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.text.StringUtil;
@@ -73,14 +72,9 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
         super(true);
         this.psiElements = psiElements;
         this.project = project;
-        Module[] modules = CoreModuleManager.getInstance((Project) Objects.requireNonNull(project)).getModules();
-        Module[] var4 = modules;
-        int var5 = modules.length;
-
-        for (int var6 = 0; var6 < var5; ++var6) {
-            Module module = var4[var6];
+        Module[] modules = CoreModuleManager.getInstance( Objects.requireNonNull(project)).getModules();
+        for (Module module : modules) {
             this.moduleName.addItem(module.getName());
-            ModuleRootManager var8 = ModuleRootManager.getInstance(module);
         }
 
         if (modules.length > 0) {
@@ -123,7 +117,7 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
         String configJson = PropertiesComponent.getInstance().getValue("CustomMybatisConfigData");
         if (StringUtil.isNotEmpty(configJson)) {
             try {
-                MybatisConfig config = (MybatisConfig) JSON.parseObject(configJson, MybatisConfig.class);
+                MybatisConfig config = JSON.parseObject(configJson, MybatisConfig.class);
                 this.moduleName.setSelectedItem(config.getModuleName());
                 this.modelPComboBox.setSelectedItem(config.getModelPackage());
                 this.modelFText.setText(config.getModelFolder());
@@ -133,12 +127,9 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
                 this.xmlFText.setText(config.getXmlFolder());
                 this.isLombok.setSelected(config.isLombok());
                 this.isUpperCamelCase.setSelected(config.isUpperCamelCase());
-                Iterator var3 = MybatisConstant.PLUGIN_TYPE.keySet().iterator();
-
-                while (var3.hasNext()) {
-                    String key = (String) var3.next();
-                    this.pluginType.addItem(key);
-                }
+                MybatisConstant.PLUGIN_TYPE.forEach((k,v) ->{
+                    this.pluginType.addItem(k);
+                });
 
                 this.pluginType.setSelectedItem(config.getPluginType());
                 this.author.setText(config.getAuthor());

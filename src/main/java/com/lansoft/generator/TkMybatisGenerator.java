@@ -110,7 +110,7 @@ public class TkMybatisGenerator implements MybatisGenerator {
 
     private void commentConfig(Context context, MybatisConfig mybatisConfig) {
         CommentGeneratorConfiguration commentConfiguration = new CommentGeneratorConfiguration();
-        commentConfiguration.setConfigurationType("com.lansoft.generator.custom.CommentCustomGenerator");
+        commentConfiguration.setConfigurationType("com.lansoft.generator.custom.MyCustomCommentGenerator");
         commentConfiguration.addProperty("suppressDate", "false");
         commentConfiguration.addProperty("suppressAllComments", "false");
         commentConfiguration.addProperty("addRemarkComments", "true");
