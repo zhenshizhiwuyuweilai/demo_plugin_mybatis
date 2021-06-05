@@ -19,7 +19,6 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiPackage;
 import com.lansoft.constant.MybatisConstant;
 import com.lansoft.generator.MybatisGenerator;
-import com.lansoft.generator.MybatisGenerator2;
 import com.lansoft.model.MybatisConfig;
 
 import javax.swing.*;
