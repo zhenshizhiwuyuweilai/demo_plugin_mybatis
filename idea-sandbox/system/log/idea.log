@@ -16805,3 +16805,35 @@ java.lang.Throwable
 2021-06-06 06:27:32,323 [ 625455]   WARN - com.intellij.util.xmlb.Binding - no accessors for org.jetbrains.kotlin.idea.scripting.gradle.GradleScriptInputsWatcher$Storage 
 2021-06-06 06:27:32,334 [ 625466]   WARN - com.intellij.util.xmlb.Binding - no accessors for org.jetbrains.kotlin.idea.core.script.configuration.utils.ScriptClassRootsStorage 
 2021-06-06 06:27:32,364 [ 625496]   INFO - rationStore.ComponentStoreImpl - Saving Project(name=empty, containerState=ACTIVE, componentStore=D:\project\test_project\empty)XDebuggerManager took 12 ms 
+2021-06-06 06:36:34,236 [1167368]   INFO - roject.DumbServiceGuiTaskQueue - Running dumb mode task: com.intellij.openapi.roots.impl.PushedFilePropertiesUpdaterImpl$3@794fb0f7 
+2021-06-06 06:36:34,254 [1167386]   INFO - penapi.project.DumbServiceImpl - updateFinished 
+2021-06-06 06:36:34,254 [1167386]   INFO - g.FileBasedIndexProjectHandler - Has changed files: false; project=Project(name=empty, containerState=ACTIVE, componentStore=D:\project\test_project\empty) 
+2021-06-06 06:36:49,157 [1182289]   INFO - rationStore.ComponentStoreImpl - Saving Project(name=empty, containerState=ACTIVE, componentStore=D:\project\test_project\empty)KotlinCommonCompilerArguments took 14 ms 
+2021-06-06 06:36:56,449 [1189581]   INFO - ution.rmi.RemoteProcessSupport - Terminating: 22832/RemoteDriverImpl52cf83ef 
+2021-06-06 06:36:56,501 [1189633]   INFO - ution.rmi.RemoteProcessSupport - Process finished with exit code -1 
+2021-06-06 06:36:56,727 [1189859]   INFO - pl.local.NativeFileWatcherImpl - Watcher terminated with exit code 0 
+2021-06-06 06:36:56,739 [1189871]   INFO - org.jetbrains.io.BuiltInServer - web server stopped 
+2021-06-06 06:36:56,739 [1189871]   INFO - .impl.FileTypeDetectionService - 0 auto-detected files. Detection took 0 ms 
+2021-06-06 06:36:56,749 [1189881]   INFO - il.indexing.FileBasedIndexImpl - START INDEX SHUTDOWN 
+2021-06-06 06:36:56,814 [1189946]   INFO - tellij.psi.stubs.StubIndexImpl - StubIndexExtension-s were unloaded 
+2021-06-06 06:36:56,823 [1189955]   INFO - redIndexChunkConfigurationImpl - Shared index chunks shutdown was performed successful 
+2021-06-06 06:36:56,823 [1189955]   INFO - il.indexing.FileBasedIndexImpl - END INDEX SHUTDOWN 
+2021-06-06 06:36:56,823 [1189955]   INFO - newvfs.persistent.PersistentFS - VFS dispose started 
+2021-06-06 06:36:56,829 [1189961]   INFO - newvfs.persistent.PersistentFS - VFS dispose completed 
+2021-06-06 06:36:56,829 [1189961]   INFO - stubs.SerializationManagerImpl - Start shutting down D:\CustomProject\mybatis-custom-plugin\idea-sandbox\system\index\rep.names 
+2021-06-06 06:36:56,830 [1189962]   INFO - stubs.SerializationManagerImpl - Finished shutting down D:\CustomProject\mybatis-custom-plugin\idea-sandbox\system\index\rep.names 
+2021-06-06 06:36:56,831 [1189963]   INFO - plication.impl.ApplicationImpl - Write action Statistics:
+Event number:     54
+Total time spent: 1376ms
+Average duration: 25ms
+Median  duration: 6ms
+Max     duration: 440ms (it was 'write action (class com.intellij.database.dataSource.DataSourceStorage$$Lambda$3404/0x0000000102152040)') 
+2021-06-06 06:36:56,833 [1189965]   INFO - plication.impl.ApplicationImpl - AnAction.update() Statistics:
+Event number:     28175
+Total time spent: 2012ms
+Average duration: 0ms
+Median  duration: 0ms
+Max     duration: 493ms (it was 'Find Usages action update (class com.intellij.find.actions.FindUsagesAction)') 
+2021-06-06 06:36:56,833 [1189965]   INFO - plication.impl.ApplicationImpl - Global instance threads created counter = 36; ProcessIOExecutorService threads: 10 
+2021-06-06 06:36:56,834 [1189966]   INFO -        #com.intellij.idea.Main - ------------------------------------------------------ IDE SHUTDOWN ------------------------------------------------------ 
+2021-06-06 06:36:56,837 [1189969]   INFO - org.jetbrains.io.BuiltInServer - web server stopped 

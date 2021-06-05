@@ -122,7 +122,7 @@ public class TkMybatisGenerator implements MybatisGenerator {
         JDBCConnectionConfiguration jdbcConfig = new JDBCConnectionConfiguration();
         DbTableImpl table = (DbTableImpl)mybatisConfig.getPsiElements()[0];
         DbDataSourceImpl dataSource = table.getDataSource();
-        LocalDataSource delegate = (LocalDataSource)((LocalDataSource)dataSource.getDelegate());
+        LocalDataSource delegate = (LocalDataSource)(dataSource.getDelegate());
         jdbcConfig.setDriverClass(delegate.getDriverClass());
         jdbcConfig.setConnectionURL(delegate.getUrl());
         jdbcConfig.setUserId(delegate.getUsername());

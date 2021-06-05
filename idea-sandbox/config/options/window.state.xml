@@ -4,7 +4,7 @@
     <size key="find.popup.0.0.2560.1440" width="596" height="804" />
   </component>
   <component name="WindowManager">
-    <frame x="0" y="0" width="1920" height="1040" />
+    <frame x="0" y="0" width="1920" height="1040" extendedState="1" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" />

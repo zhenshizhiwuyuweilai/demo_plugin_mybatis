@@ -12,9 +12,9 @@
 <!--    <depends >com.intellij.modules.ultimate</depends>-->
     <depends>com.intellij.database</depends>
     <!-- support aliases -->
-    <depends>com.intellij.spring</depends>
+<!--    <depends>com.intellij.spring</depends>-->
     <!-- support aliases -->
-    <depends>com.intellij.spring.boot</depends>
+<!--    <depends>com.intellij.spring.boot</depends>-->
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
