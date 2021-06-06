@@ -14,6 +14,7 @@ import com.intellij.database.psi.DbTableImpl;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.PsiElement;
 import com.lansoft.model.MybatisConfig;
+import com.lansoft.utils.DialogUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.*;
@@ -80,15 +81,15 @@ public class MybatisPlusGenerator implements MybatisGenerator {
 
         strategy.setEntityLombokModel(mybatisConfig.isLombok());
         strategy.setRestControllerStyle(mybatisConfig.isRestController());
-        strategy.setInclude((String[])mybatisConfig.getTableNameList().toArray(new String[0]));
+        strategy.setInclude((String[]) mybatisConfig.getTableNameList().toArray(new String[0]));
         strategy.setTablePrefix(new String[]{mybatisConfig.getTableNamePrefix()});
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         Map<LocalDataSource, String> dataSourceMap = this.getDataSourceConfig(mybatisConfig.getPsiElements());
         Iterator var9 = dataSourceMap.keySet().iterator();
 
-        while(var9.hasNext()) {
-            LocalDataSource dataSource = (LocalDataSource)var9.next();
+        while (var9.hasNext()) {
+            LocalDataSource dataSource = (LocalDataSource) var9.next();
             DataSourceConfig dsc = new DataSourceConfig();
             dsc.setDriverName(dataSource.getDriverClass());
             dsc.setUrl(dataSource.getUrl());
@@ -109,26 +110,15 @@ public class MybatisPlusGenerator implements MybatisGenerator {
     public Map<LocalDataSource, String> getDataSourceConfig(PsiElement[] psiElements) {
         Map<LocalDataSource, String> map = new HashMap(5);
         if (psiElements != null) {
-            DatabaseCredentials databaseCredentials = DatabaseCredentials.getInstance();
-            PsiElement[] var4 = psiElements;
-            int var5 = psiElements.length;
-
-            for(int var6 = 0; var6 < var5; ++var6) {
-                PsiElement psiElement = var4[var6];
-                DbTableImpl table = (DbTableImpl)psiElement;
-                DbDataSourceImpl dataSource = table.getDataSource();
-                LocalDataSource delegate = (LocalDataSource)((LocalDataSource)dataSource.getDelegate());
-                OneTimeString password = databaseCredentials.getPassword(delegate);
-                if (password != null) {
-                    if (!map.containsKey(delegate)) {
-                        map.put(delegate, password.toString());
-                    }
-                } else if (!map.containsKey(delegate)) {
-                    map.put(delegate, null);
+            for (PsiElement psiElement : psiElements) {
+                DbTableImpl table = (DbTableImpl) psiElement;
+                LocalDataSource dataSource = (LocalDataSource) (table.getDataSource().getDelegate());
+                OneTimeString password = DialogUtils.retypePassword(dataSource);
+                if (!map.containsKey(dataSource)) {
+                    map.put(dataSource, password.toString());
                 }
             }
         }
-
         return map;
     }
 
@@ -147,7 +137,7 @@ public class MybatisPlusGenerator implements MybatisGenerator {
                         String[] var4 = split;
                         int var5 = split.length;
 
-                        for(int var6 = 0; var6 < var5; ++var6) {
+                        for (int var6 = 0; var6 < var5; ++var6) {
                             String s = var4[var6];
                             src.append("/").append(s);
                         }
@@ -171,7 +161,7 @@ public class MybatisPlusGenerator implements MybatisGenerator {
                         String[] var4 = split;
                         int var5 = split.length;
 
-                        for(int var6 = 0; var6 < var5; ++var6) {
+                        for (int var6 = 0; var6 < var5; ++var6) {
                             String s = var4[var6];
                             src.append("/").append(s);
                         }
@@ -195,7 +185,7 @@ public class MybatisPlusGenerator implements MybatisGenerator {
                         String[] var4 = split;
                         int var5 = split.length;
 
-                        for(int var6 = 0; var6 < var5; ++var6) {
+                        for (int var6 = 0; var6 < var5; ++var6) {
                             String s = var4[var6];
                             mapperSrc.append("/").append(s);
                         }

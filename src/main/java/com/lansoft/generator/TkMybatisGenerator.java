@@ -9,7 +9,9 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.PsiElement;
 import com.lansoft.model.MybatisConfig;
 import com.lansoft.utils.CaseUtils;
+import com.lansoft.utils.DialogUtils;
 import com.lansoft.utils.FileUtil;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.api.ProgressCallback;
 import org.mybatis.generator.config.CommentGeneratorConfiguration;
@@ -74,8 +77,8 @@ public class TkMybatisGenerator implements MybatisGenerator {
             List<String> tableNameList = mybatisConfig.getTableNameList();
 
             TableConfiguration configuration;
-            for(Iterator var7 = tableNameList.iterator(); var7.hasNext(); context.addTableConfiguration(configuration)) {
-                String tableName = (String)var7.next();
+            for (Iterator var7 = tableNameList.iterator(); var7.hasNext(); context.addTableConfiguration(configuration)) {
+                String tableName = (String) var7.next();
                 configuration = new TableConfiguration(context);
                 configuration.setTableName(tableName);
                 if (namePrefix != null) {
@@ -120,20 +123,12 @@ public class TkMybatisGenerator implements MybatisGenerator {
 
     private void jdbcConfig(Context context, MybatisConfig mybatisConfig) {
         JDBCConnectionConfiguration jdbcConfig = new JDBCConnectionConfiguration();
-        DbTableImpl table = (DbTableImpl)mybatisConfig.getPsiElements()[0];
-        DbDataSourceImpl dataSource = table.getDataSource();
-        LocalDataSource delegate = (LocalDataSource)(dataSource.getDelegate());
-        jdbcConfig.setDriverClass(delegate.getDriverClass());
-        jdbcConfig.setConnectionURL(delegate.getUrl());
-        jdbcConfig.setUserId(delegate.getUsername());
-        DatabaseCredentials databaseCredentials = DatabaseCredentials.getInstance();
-        OneTimeString password = databaseCredentials.getPassword(delegate);
-        if (password == null) {
-            Messages.showMessageDialog("获取数据库密码失败！请配置密码！", "Custom-Mybatis-Generator：异常信息提示", Messages.getInformationIcon());
-            //弹出密码输入框，输入密码，待完
-
-            password = new OneTimeString("");
-        }
+        DbTableImpl table = (DbTableImpl) mybatisConfig.getPsiElements()[0];
+        LocalDataSource dataSource = (LocalDataSource) (table.getDataSource().getDelegate());
+        jdbcConfig.setDriverClass(dataSource.getDriverClass());
+        jdbcConfig.setConnectionURL(dataSource.getUrl());
+        jdbcConfig.setUserId(dataSource.getUsername());
+        OneTimeString password = DialogUtils.retypePassword(dataSource);
 
         jdbcConfig.setPassword(password.toString());
         jdbcConfig.addProperty("nullCatalogMeansCurrent", "true");
@@ -144,9 +139,9 @@ public class TkMybatisGenerator implements MybatisGenerator {
 
     public Map<LocalDataSource, String> getDataSourceConfig(PsiElement[] psiElements) {
         DatabaseCredentials databaseCredentials = DatabaseCredentials.getInstance();
-        DbTableImpl table = (DbTableImpl)psiElements[0];
+        DbTableImpl table = (DbTableImpl) psiElements[0];
         DbDataSourceImpl dataSource = table.getDataSource();
-        LocalDataSource delegate = (LocalDataSource)((LocalDataSource)dataSource.getDelegate());
+        LocalDataSource delegate = (LocalDataSource) (dataSource.getDelegate());
         OneTimeString password = databaseCredentials.getPassword(delegate);
         Map<LocalDataSource, String> map = new HashMap(5);
         if (password != null) {

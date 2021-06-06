@@ -2,14 +2,23 @@ package com.lansoft.dialog;
 
 import com.alibaba.fastjson.JSON;
 import com.intellij.core.CoreModuleManager;
+import com.intellij.database.access.DatabaseCredentials;
+import com.intellij.database.dataSource.DatabaseAuthProvider;
+import com.intellij.database.dataSource.LocalDataSource;
+import com.intellij.database.dataSource.url.ui.DatabaseAuthPanel;
+import com.intellij.database.psi.DbDataSourceImpl;
 import com.intellij.database.psi.DbTable;
+import com.intellij.database.psi.DbTableImpl;
 import com.intellij.ide.util.PackageChooserDialog;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.module.Module;
+import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.DialogBuilder;
 import com.intellij.openapi.ui.DialogWrapper;
+import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -21,6 +30,7 @@ import com.lansoft.generator.MybatisGenerator;
 import com.lansoft.model.MybatisConfig;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -66,13 +76,15 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
     private JList<String> selectedtableName;
     private JComboBox<String> pluginType;
     private JFormattedTextField formattedTextField1;
+    private JButton saveConfig;
+    private JButton resetConfig;
 
 
     public MybatisGeneratorMainUI(PsiElement[] psiElements, Project project) {
         super(true);
         this.psiElements = psiElements;
         this.project = project;
-        Module[] modules = CoreModuleManager.getInstance( Objects.requireNonNull(project)).getModules();
+        Module[] modules = CoreModuleManager.getInstance(Objects.requireNonNull(project)).getModules();
         for (Module module : modules) {
             this.moduleName.addItem(module.getName());
         }
@@ -99,11 +111,15 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
         this.xmlFPButton.addActionListener((e) -> {
             this.xmlFText.setText(this.folderChooser("/src/main/resources"));
         });
+        this.resetConfig.addActionListener(e -> {
+            configText();
+        });
+
         readTableName(psiElements);
         //初始化数据（回显数据）
         initializeData();
         setTitle("Mybatis 逆向工程");
-        setSize(700, 800);
+        setSize(800, 800);
         init();
     }
 
@@ -127,7 +143,7 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
                 this.xmlFText.setText(config.getXmlFolder());
                 this.isLombok.setSelected(config.isLombok());
                 this.isUpperCamelCase.setSelected(config.isUpperCamelCase());
-                MybatisConstant.PLUGIN_TYPE.forEach((k,v) ->{
+                MybatisConstant.PLUGIN_TYPE.forEach((k, v) -> {
                     this.pluginType.addItem(k);
                 });
 
@@ -141,6 +157,48 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
             }
         } else {
             this.configText();
+        }
+    }
+
+    private void saveConfig(ActionEvent actionEvent) {
+        String[] dataLists = PropertiesComponent.getInstance().getValues("CustomMybatisConfigDataList");
+        if (dataLists == null || dataLists.length == 0) {
+            dataLists = new String[]{};
+        }
+        MybatisConfig mybatisConfig = new MybatisConfig(this);
+
+//        String[]
+//        PropertiesComponent.getInstance().setValues("CustomMybatisConfigDataList", );
+    }
+
+    private void savePassWord() {
+        DatabaseCredentials dc = DatabaseCredentials.getInstance();
+        if (psiElements.length > 0) {
+            DbTableImpl table = (DbTableImpl) psiElements[0];
+            LocalDataSource dataSource = (LocalDataSource) ( table.getDataSource().getDelegate());
+
+            DatabaseAuthPanel auth = new DatabaseAuthPanel(project, dataSource, dc);
+            auth.reset(dataSource, false);
+            DatabaseAuthProvider.AuthWidget widget = auth.getAuthWidget();
+            if (widget != null) {
+                widget.forceSave();
+            }
+//            dc.setPassword(dataSource,"");
+//            boolean ok;
+//            if (ourCredentialsInterceptor == null) {
+//                auth.getComponent().setBorder(Borders.emptyTop(12));
+//                DialogBuilder builder = DatabaseCredentials.prepareDialog(project, (error ? MessageType.ERROR : MessageType.WARNING).getDefaultIcon(), auth.getComponent(), "Connecting to '" + dataSource.getName() + "'...", StringUtil.notNullize(message));
+//                builder.setPreferredFocusComponent(auth.getPreferredFocusedComponent());
+//                ok = builder.show() == 0;
+//            } else {
+//                ok = (Boolean) ourCredentialsInterceptor.fun(auth);
+//            }
+//
+//            if (!ok) {
+//                throw new ProcessCanceledException();
+//            }
+//
+//            auth.save(dataSource, true);
         }
     }
 
