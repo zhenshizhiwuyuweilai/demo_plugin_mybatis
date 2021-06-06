@@ -1,4 +1,3 @@
-
 //　build.gradle classpath 需要的仓库
 buildscript {
     repositories {
@@ -38,7 +37,7 @@ intellij {
     //Bundled plugin dependencies 配置自带插件，lombok-plugin是手动复制进仓储中的\ideaIU-2019.1.2\plugins
     // 也可以删除'lombok-plugin'
     plugins = ['java','DatabaseTools'] // , 'lombok-plugin' , 'DatabaseTools'
-    pluginName 'MybatisPlus'
+    pluginName 'Custom-Mybatis-Generator'
     sandboxDirectory = "${rootProject.rootDir}/idea-sandbox"
     updateSinceUntilBuild = false
 }
@@ -58,7 +57,6 @@ repositories {
 }
 
 dependencies {
-//    compile "org.springframework:spring-core:5.0.6.RELEASE"
     compile group: 'com.baomidou', name: 'mybatis-plus-generator', version: '3.2.0'
     compile group: 'org.freemarker', name: 'freemarker', version: '2.3.28'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
@@ -67,16 +65,9 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
     compile fileTree(dir: 'lib', includes: ['*jar'])
-//    compile group: 'com.softwareloop', name: 'mybatis-generator-lombok-plugin', version: '1.0'
     compile group: 'uk.com.robust-it', name: 'cloning', version: '1.9.2'
-    // https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core
     compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.3.7'
-    // https://mvnrepository.com/artifact/tk.mybatis/mapper-generator
-    // https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-maven-plugin
-//    implementation group: 'org.mybatis.generator', name: 'mybatis-generator-maven-plugin', version: '1.3.7'
     compile group: 'tk.mybatis', name: 'mapper-generator', version: '1.1.5'
-//    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
-//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.3.8.RELEASE'
     testCompile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.3.0'
     testCompile group: 'commons-io', name: 'commons-io', version: '2.8.0'
     compileOnly "org.projectlombok:lombok:1.18.18"
