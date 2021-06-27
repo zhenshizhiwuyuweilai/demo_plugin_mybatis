@@ -243,9 +243,7 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
         this.xmlFText.setText(this.project.getBasePath() + "/src/main/resources");
         this.isLombok.setSelected(true);
         this.isUpperCamelCase.setSelected(true);
-        Iterator var1 = MybatisConstant.PLUGIN_TYPE.keySet().iterator();
-        while (var1.hasNext()) {
-            String key = (String) var1.next();
+        for (String key : MybatisConstant.PLUGIN_TYPE.keySet()) {
             this.pluginType.addItem(key);
         }
     }

@@ -76,11 +76,13 @@ public class TkMybatisGenerator implements MybatisGenerator {
 
             List<String> tableNameList = mybatisConfig.getTableNameList();
 
-            TableConfiguration configuration;
-            for (Iterator var7 = tableNameList.iterator(); var7.hasNext(); context.addTableConfiguration(configuration)) {
-                String tableName = (String) var7.next();
-                configuration = new TableConfiguration(context);
+            for (String tableName : tableNameList) {
+                TableConfiguration configuration = new TableConfiguration(context);
                 configuration.setTableName(tableName);
+                configuration.setCountByExampleStatementEnabled(false);
+                configuration.setUpdateByExampleStatementEnabled(false);
+                configuration.setDeleteByExampleStatementEnabled(false);
+                configuration.setSelectByExampleStatementEnabled(false);
                 if (namePrefix != null) {
                     Pattern pattern = Pattern.compile(namePrefix);
                     Matcher matcher = pattern.matcher(tableName);
@@ -88,9 +90,9 @@ public class TkMybatisGenerator implements MybatisGenerator {
                     domainObjectName = CaseUtils.toCamelCase(domainObjectName, true, new char[]{'_'});
                     configuration.setDomainObjectName(domainObjectName);
                 }
+                context.addTableConfiguration(configuration);
             }
-
-            context.setTargetRuntime("tk.mybatis.mapper.generator.TkMyBatis3SimpleImpl");
+            context.setTargetRuntime("tk.mybatis.mapper.generator.TkMyBatis3Impl");
             context.setId("DBTables");
             config.addContext(context);
             DefaultShellCallback callback = new DefaultShellCallback(true);

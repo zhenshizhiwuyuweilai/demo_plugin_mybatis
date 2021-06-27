@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 这个是使用mybatis逆向工程生成dao接口、实体类、mapper.xml的配置文件，只有此一个配置文件，就可以完成自动生成代码 -->
+    <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包MyBatis3-->
+    <classPathEntry location="E:\Warehouse\com\oracle\ojdbc7\12.1.0.1.0\ojdbc7-12.1.0.1.0.jar"/>
+    <context id="oracle" targetRuntime="MyBatis3Simple">
+        <!--<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <property name="caseSensitive" value="true"/>
+            <property name="useMapperCommentGenerator" value="true"/>
+            &lt;!&ndash;生成@Data注解&ndash;&gt;
+            <property name="lombok" value="Data"/>
+        </plugin>-->
+
+        <!--        <commentGenerator>-->
+        <!--&lt;!&ndash;            <property name="suppressAllComments" value="false"/>&ndash;&gt;-->
+        <!--        </commentGenerator>-->
+        <!--com.mysql.jdbc.Driver数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@59.110.229.141:1521/iomdb" userId="wfadmin"
+                        password="Oracle_123">
+        </jdbcConnection>
+        <!--        <javaTypeResolver>-->
+        <!--            <property name="forceBigDecimals" value="false"/>-->
+        <!--        </javaTypeResolver>-->
+        <!-- 生成模型的包名和位置(生成实体类)-->
+        <!--<javaModelGenerator targetPackage="com.lansoft.entities.kb" targetProject="src/main/java">-->
+        <javaModelGenerator targetPackage="com.lansoft.entities.js.send"
+                            targetProject="D:\generator">
+            <!--            <property name="enableSubPackages" value="true"/>-->
+            <!--            <property name="trimStrings" value="true"/>-->
+        </javaModelGenerator>
+        <!--生成映射文件的包名和位置-->
+        <!--        <sqlMapGenerator targetPackage="mybatis.mapper.res" targetProject="src/main/resources">-->
+        <sqlMapGenerator targetPackage="mybatis.mapper.js.send"
+                         targetProject="D:\generator">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.lansoft.dao.js.send"
+                             targetProject="D:\generator">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--查询字段注释sql-->
+        <!--SELECT TABLE_NAME,COLUMN_NAME,COMMENTS FROM USER_COL_COMMENTS where TABLE_NAME = 'JS_I_BUILDTASK';
+
+        SELECT * FROM USER_COL_COMMENTS where TABLE_NAME = 'JS_I_BUILDTASK';-->
+
+
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
+        <!-- <table tableName="message" domainObjectName="Message" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="GK_INFO_KX"></table>
+        <table tableName="GK_NODE_KX"></table>
+        <table tableName="GK_INFO_GJ_KX"></table>
+        <table tableName="GK_INFO_KZ_KX"></table>
+        <table tableName="GK_ADSL_ATTR_KX"></table>
+        <table tableName="GK_PHONE_ATTR_KX"></table>
+        <table tableName="GK_WYDD_INFO_KX"></table>
+        <table tableName="GK_INFO_480FUWU_KX"></table>
+        <table tableName="GK_INFO_GKX_KX"></table>-->
+
+
+        <!--<table tableName="GK_INFO_HISNEW"></table>
+        <table tableName="GK_NODE_HISNEW"></table>
+        <table tableName="GK_INFO_GJ_HISNEW"></table>
+        <table tableName="GK_INFO_KZ_HISNEW"></table>
+        <table tableName="GK_ADSL_ATTR_HISNEW"></table>
+        <table tableName="GK_PHONE_ATTR_HISNEW"></table>
+        <table tableName="GK_ZYHT_HISNEW"></table>
+        <table tableName="GK_ZCPLX_HISNEW"></table>
+        <table tableName="GK_WBCLNEW"></table>
+        <table tableName="GK_WYDD_INFO_HISNEW"></table>
+        <table tableName="GK_INFO_480FUWU_HISNEW"></table>
+        <table tableName="GK_INFO_GKX_HIS"></table>
+        <table tableName="SSJK_DR_LPZKTLNEW"></table>
+        <table tableName="KHPG_DY_CLJSLNEW"></table>
+        <table tableName="KHPG_DY_KDJGLNEW"></table>
+        <table tableName="ZHFX_ZJ_QYWNEW"></table>
+        <table tableName="ZHFX_ZJ_KDNEW"></table>-->
+
+        <!--<table tableName="gk_gf_iom_info"></table>
+        <table tableName="gk_info_yj_his"></table>-->
+        <!--        <table tableName="res_i_reception"></table>-->
+        <!--        <table tableName="res_i_send"></table>-->
+        <!--        <table tableName="JS_I_BUILDTASK"/>-->
+        <table tableName="IOM_CONSTRUCTION_INFO"/>
+<!--        <table tableName="RES_I_RECEIVENUM_CHANGE"/>-->
+<!--        <table tableName="res_i_receivedisres_inst"/>-->
+    </context>
+</generatorConfiguration>
