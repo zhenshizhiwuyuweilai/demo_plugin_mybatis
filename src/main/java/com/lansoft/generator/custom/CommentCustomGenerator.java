@@ -174,8 +174,8 @@ public class CommentCustomGenerator implements CommentGenerator {
         sb.append(introspectedTable.getFullyQualifiedTable());
         topLevelClass.addJavaDocLine(sb.toString());
         topLevelClass.addJavaDocLine(" *");
-        topLevelClass.addJavaDocLine(" * @Author " + this.author);
-        topLevelClass.addJavaDocLine(" * @Date " + this.getDateString());
+        topLevelClass.addJavaDocLine(" * @author " + this.author);
+        topLevelClass.addJavaDocLine(" * @date " + this.getDateString());
         topLevelClass.addJavaDocLine(" */");
     }
 

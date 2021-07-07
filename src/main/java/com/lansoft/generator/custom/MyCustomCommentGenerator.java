@@ -286,8 +286,8 @@ public class MyCustomCommentGenerator implements CommentGenerator {
         topLevelClass.addJavaDocLine(sb.toString());
 
         topLevelClass.addJavaDocLine(" *");
-        topLevelClass.addJavaDocLine(" * @Author " + author);
-        topLevelClass.addJavaDocLine(" * @Date " + getDateString());
+        topLevelClass.addJavaDocLine(" * @author " + author);
+        topLevelClass.addJavaDocLine(" * @date " + getDateString());
 
 //        addJavadocTag(topLevelClass, true);
 
