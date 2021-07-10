@@ -28,6 +28,7 @@ import java.util.Map;
  * @Author 郭伟东
  * @Date 2021/1/24  14:21
  */
+@Deprecated
 public class MybatisPlusGenerator2{
 //VirtualFileManager.getInstance().syncRefresh();  刷新编译
 //String configJson = PropertiesComponent.getInstance().getValue(GEN_CONFIG);

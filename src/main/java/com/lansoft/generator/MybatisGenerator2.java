@@ -15,6 +15,7 @@ import java.util.List;
  * @Author 郭伟东
  * @Date 2021/1/24  14:21
  */
+@Deprecated
 public class MybatisGenerator2 {
 
     /**

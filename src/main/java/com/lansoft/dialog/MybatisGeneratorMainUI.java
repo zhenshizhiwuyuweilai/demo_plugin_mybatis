@@ -6,7 +6,6 @@ import com.intellij.database.access.DatabaseCredentials;
 import com.intellij.database.dataSource.DatabaseAuthProvider;
 import com.intellij.database.dataSource.LocalDataSource;
 import com.intellij.database.dataSource.url.ui.DatabaseAuthPanel;
-import com.intellij.database.psi.DbDataSourceImpl;
 import com.intellij.database.psi.DbTable;
 import com.intellij.database.psi.DbTableImpl;
 import com.intellij.ide.util.PackageChooserDialog;
@@ -14,15 +13,14 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.module.Module;
-import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.DialogBuilder;
 import com.intellij.openapi.ui.DialogWrapper;
-import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.openapi.vfs.newvfs.impl.VirtualDirectoryImpl;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiPackage;
 import com.lansoft.constant.MybatisConstant;
@@ -32,7 +30,6 @@ import com.lansoft.model.MybatisConfig;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 
@@ -97,19 +94,19 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
             this.modelPComboBox.setSelectedItem(this.packageChooser());
         });
         this.modelFButton.addActionListener((e) -> {
-            this.modelFText.setText(this.folderChooser("/src/main/java"));
+            this.modelFText.setText(this.folderChooser(this.modelFText.getText(),"/src/main/java"));
         });
         this.mapperPButton.addActionListener((e) -> {
             this.mapperPComboBox.setSelectedItem(this.packageChooser());
         });
         this.mapperFButton.addActionListener((e) -> {
-            this.mapperFText.setText(this.folderChooser("/src/main/java"));
+            this.mapperFText.setText(this.folderChooser(this.mapperFText.getText(),"/src/main/java"));
         });
         this.xmlPButton.addActionListener((e) -> {
-            this.xmlPComboBox.setSelectedItem(this.packageChooser());
+            this.xmlPComboBox.setSelectedItem(this.resourcePackageChooser());
         });
         this.xmlFPButton.addActionListener((e) -> {
-            this.xmlFText.setText(this.folderChooser("/src/main/resources"));
+            this.xmlFText.setText(this.folderChooser(this.xmlFText.getText(),"/src/main/resources"));
         });
         this.resetConfig.addActionListener(e -> {
             configText();
@@ -171,18 +168,18 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
 //        PropertiesComponent.getInstance().setValues("CustomMybatisConfigDataList", );
     }
 
-    private void savePassWord() {
-        DatabaseCredentials dc = DatabaseCredentials.getInstance();
-        if (psiElements.length > 0) {
-            DbTableImpl table = (DbTableImpl) psiElements[0];
-            LocalDataSource dataSource = (LocalDataSource) ( table.getDataSource().getDelegate());
-
-            DatabaseAuthPanel auth = new DatabaseAuthPanel(project, dataSource, dc);
-            auth.reset(dataSource, false);
-            DatabaseAuthProvider.AuthWidget widget = auth.getAuthWidget();
-            if (widget != null) {
-                widget.forceSave();
-            }
+//    private void savePassWord() {
+//        DatabaseCredentials dc = DatabaseCredentials.getInstance();
+//        if (psiElements.length > 0) {
+//            DbTableImpl table = (DbTableImpl) psiElements[0];
+//            LocalDataSource dataSource = (LocalDataSource) (table.getDataSource().getDelegate());
+//
+//            DatabaseAuthPanel auth = new DatabaseAuthPanel(project, dataSource, dc);
+//            auth.reset(dataSource, false);
+//            DatabaseAuthProvider.AuthWidget widget = auth.getAuthWidget();
+//            if (widget != null) {
+//                widget.forceSave();
+//            }
 //            dc.setPassword(dataSource,"");
 //            boolean ok;
 //            if (ourCredentialsInterceptor == null) {
@@ -199,36 +196,59 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
 //            }
 //
 //            auth.save(dataSource, true);
-        }
-    }
+//        }
+//    }
 
     /**
      * 文件夹选择器
      *
+     * @param resentableUrl 选择前的文件夹路径
      * @param src 默认的包路径
      * @return 选择的包路径
      */
-    private String folderChooser(String src) {
-        VirtualFile virtualFile1 = null;
-        if (this.project.getProjectFile() != null) {
-            virtualFile1 = this.project.getProjectFile().getParent();
+    private String folderChooser(String resentableUrl,String src) {
+        VirtualFile workspaceFile = this.project.getWorkspaceFile();
+        VirtualFile projectFile = this.project.getProjectFile();
+        VirtualFile parent = this.project.getProjectFile().getParent().getParent();
+        String presentableUrl = this.project.getPresentableUrl();
+        String url = this.project.getProjectFile().getUrl();
+        VirtualFile fileByPath;
+        if (StringUtil.isNotEmpty(resentableUrl)) {
+            fileByPath = LocalFileSystem.getInstance().findFileByPath(resentableUrl);
+        } else {
+            fileByPath = LocalFileSystem.getInstance().findFileByPath(Objects.requireNonNull(this.project.getPresentableUrl()));
         }
-
-        VirtualFile virtualFile = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), this.project, virtualFile1);
+        if (fileByPath == null){
+            fileByPath = LocalFileSystem.getInstance().findFileByPath(Objects.requireNonNull(this.project.getPresentableUrl()));
+        }
+        VirtualFile virtualFile = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), this.project, fileByPath);
         if (virtualFile != null) {
             return virtualFile.getPath();
         } else {
-            return this.project.getProjectFile() != null ? this.project.getBasePath() + "/" + src : "";
+            return this.project.getProjectFile() != null ? this.project.getBasePath() + src : "";
         }
     }
 
     /**
      * 打开包选择器
+     * 选择源文件（java）
      *
      * @return 选择的路径
      */
     private String packageChooser() {
         PackageChooserDialog chooserDialog = new PackageChooserDialog("package chooser", this.project);
+        chooserDialog.show();
+        PsiPackage selectedPackage = chooserDialog.getSelectedPackage();
+        return selectedPackage.getQualifiedName();
+    }
+
+    /**
+     * 选择资源文件(resources)
+     *
+     * @return 选择的路径
+     */
+    private String resourcePackageChooser() {
+        ResourcePackageChooserDialog chooserDialog = new ResourcePackageChooserDialog("choose mapper xml package", this.project);
         chooserDialog.show();
         PsiPackage selectedPackage = chooserDialog.getSelectedPackage();
         return selectedPackage.getQualifiedName();
