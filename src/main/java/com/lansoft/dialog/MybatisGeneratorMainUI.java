@@ -207,11 +207,6 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
      * @return 选择的包路径
      */
     private String folderChooser(String resentableUrl,String src) {
-        VirtualFile workspaceFile = this.project.getWorkspaceFile();
-        VirtualFile projectFile = this.project.getProjectFile();
-        VirtualFile parent = this.project.getProjectFile().getParent().getParent();
-        String presentableUrl = this.project.getPresentableUrl();
-        String url = this.project.getProjectFile().getUrl();
         VirtualFile fileByPath;
         if (StringUtil.isNotEmpty(resentableUrl)) {
             fileByPath = LocalFileSystem.getInstance().findFileByPath(resentableUrl);
