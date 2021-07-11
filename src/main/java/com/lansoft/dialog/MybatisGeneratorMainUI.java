@@ -2,14 +2,12 @@ package com.lansoft.dialog;
 
 import com.alibaba.fastjson.JSON;
 import com.intellij.core.CoreModuleManager;
-import com.intellij.database.access.DatabaseCredentials;
-import com.intellij.database.dataSource.DatabaseAuthProvider;
-import com.intellij.database.dataSource.LocalDataSource;
-import com.intellij.database.dataSource.url.ui.DatabaseAuthPanel;
 import com.intellij.database.psi.DbTable;
-import com.intellij.database.psi.DbTableImpl;
+import com.intellij.ide.extensionResources.ExtensionsRootType;
+import com.intellij.ide.scratch.ScratchFileService;
 import com.intellij.ide.util.PackageChooserDialog;
 import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.module.Module;
@@ -20,15 +18,17 @@ import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
-import com.intellij.openapi.vfs.newvfs.impl.VirtualDirectoryImpl;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiPackage;
 import com.lansoft.constant.MybatisConstant;
 import com.lansoft.generator.MybatisGenerator;
 import com.lansoft.model.MybatisConfig;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
@@ -80,6 +80,11 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
     public MybatisGeneratorMainUI(PsiElement[] psiElements, Project project) {
         super(true);
         this.psiElements = psiElements;
+
+//        List<DbTable> dbTables = Stream.of(psiElements).filter(t -> t instanceof DbTable).map(t -> (DbTable) t).collect(Collectors.toList());
+//        Map<String, DbTable> tableMapping = dbTables.stream().collect(Collectors.toMap(DasObject::getName, a -> a, (a, b) -> a));
+
+
         this.project = project;
         Module[] modules = CoreModuleManager.getInstance(Objects.requireNonNull(project)).getModules();
         for (Module module : modules) {
@@ -94,19 +99,19 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
             this.modelPComboBox.setSelectedItem(this.packageChooser());
         });
         this.modelFButton.addActionListener((e) -> {
-            this.modelFText.setText(this.folderChooser(this.modelFText.getText(),"/src/main/java"));
+            this.modelFText.setText(this.folderChooser(this.modelFText.getText(), "/src/main/java"));
         });
         this.mapperPButton.addActionListener((e) -> {
             this.mapperPComboBox.setSelectedItem(this.packageChooser());
         });
         this.mapperFButton.addActionListener((e) -> {
-            this.mapperFText.setText(this.folderChooser(this.mapperFText.getText(),"/src/main/java"));
+            this.mapperFText.setText(this.folderChooser(this.mapperFText.getText(), "/src/main/java"));
         });
         this.xmlPButton.addActionListener((e) -> {
             this.xmlPComboBox.setSelectedItem(this.resourcePackageChooser());
         });
         this.xmlFPButton.addActionListener((e) -> {
-            this.xmlFText.setText(this.folderChooser(this.xmlFText.getText(),"/src/main/resources"));
+            this.xmlFText.setText(this.folderChooser(this.xmlFText.getText(), "/src/main/resources"));
         });
         this.resetConfig.addActionListener(e -> {
             configText();
@@ -203,17 +208,17 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
      * 文件夹选择器
      *
      * @param resentableUrl 选择前的文件夹路径
-     * @param src 默认的包路径
+     * @param src           默认的包路径
      * @return 选择的包路径
      */
-    private String folderChooser(String resentableUrl,String src) {
+    private String folderChooser(String resentableUrl, String src) {
         VirtualFile fileByPath;
         if (StringUtil.isNotEmpty(resentableUrl)) {
             fileByPath = LocalFileSystem.getInstance().findFileByPath(resentableUrl);
         } else {
             fileByPath = LocalFileSystem.getInstance().findFileByPath(Objects.requireNonNull(this.project.getPresentableUrl()));
         }
-        if (fileByPath == null){
+        if (fileByPath == null) {
             fileByPath = LocalFileSystem.getInstance().findFileByPath(Objects.requireNonNull(this.project.getPresentableUrl()));
         }
         VirtualFile virtualFile = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), this.project, fileByPath);
@@ -247,6 +252,29 @@ public class MybatisGeneratorMainUI extends DialogWrapper {
         chooserDialog.show();
         PsiPackage selectedPackage = chooserDialog.getSelectedPackage();
         return selectedPackage.getQualifiedName();
+    }
+
+    /**
+     * 临时测试使用
+     *
+     * @param pathParam
+     * @return
+     * @throws IOException
+     */
+    private static File getPath(@NotNull String pathParam) throws IOException {
+        @NotNull PluginId id = Objects.requireNonNull(PluginId.findId("com.baomidou.plugin.idea.mybatisx"));
+        final ScratchFileService scratchFileService = ScratchFileService.getInstance();
+        final ExtensionsRootType extensionsRootType = ExtensionsRootType.getInstance();
+        final String path = scratchFileService.getRootPath(extensionsRootType) + "/" + id.getIdString() +
+                (StringUtil.isEmpty(pathParam) ? "" : "/"
+                        + pathParam);
+        @NotNull PluginId id2 = Objects.requireNonNull(PluginId.findId("com.lansoft.custom_mybatis_plugin"));
+        System.out.println(id.getIdString());
+        final File file = new File(path);
+        if (!file.exists()) {
+            extensionsRootType.extractBundledResources(id, "");
+        }
+        return file;
     }
 
     public void configText() {

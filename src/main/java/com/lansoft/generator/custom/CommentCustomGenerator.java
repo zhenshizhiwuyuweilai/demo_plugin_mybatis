@@ -1,5 +1,6 @@
 package com.lansoft.generator.custom;
 
+import com.intellij.jam.view.DeleteHandler;
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
@@ -19,6 +20,7 @@ import java.util.Set;
  * @author guowd
  * @date 2021/6/6  5:49
  */
+@Deprecated
 public class CommentCustomGenerator implements CommentGenerator {
     private Properties properties = new Properties();
     private String author = "author";
